@@ -35,9 +35,7 @@ public class EstablishmentControllerTest {
 	@Test
 	public void shouldShowAllEstablishments() {
 		when(establishmentRepo.findAll()).thenReturn(allEstablishments);
-		
 		underTest.showAllEstablishments(model);
-		
 		verify(model).addAttribute("allEstablishments", allEstablishments);
 	}
 	
