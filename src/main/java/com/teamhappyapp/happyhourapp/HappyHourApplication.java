@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HappyhourappApplication {
+public class HappyHourApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HappyhourappApplication.class, args);
+		SpringApplication.run(HappyHourApplication.class, args);
 	}
 }

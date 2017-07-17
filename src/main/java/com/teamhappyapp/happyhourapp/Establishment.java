@@ -9,9 +9,9 @@ public class Establishment {
 
 	@GeneratedValue
 	@Id
-	private Long establishmentId; // ask brian which is better practice
+	private Long establishmentId; // bc null
 
-	private String name; // ask brian if this needs to be more descriptive
+	private String name; 
 
 	public Long getEstablishmentId() {
 		return establishmentId;
