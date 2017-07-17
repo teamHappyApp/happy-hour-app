@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Columbus Happy Hours</title>
+</head>
+<body>
+	<h1>Columbus Happy Hours!</h1>
+	<div  th:each="current: ${allEstablishments}">
+	<ul>
+		<li th:text="${current.name}" />
+	</ul>
+</div>
+</body>
+</html>
