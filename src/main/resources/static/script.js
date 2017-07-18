@@ -31,3 +31,12 @@ function initMap() {
 	}
 
 }
+
+$(window).scroll(function() {
+    if($(this).scrollTop() > 60)  /*height in pixels when the navbar becomes non opaque*/ 
+    {
+        $('.navbar').addClass('opaque');
+    } else {
+        $('.navbar').removeClass('opaque');
+    }
+});
