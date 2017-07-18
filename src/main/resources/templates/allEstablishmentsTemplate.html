@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Columbus Happy Hours</title>
+	<link rel="stylesheet" type="text/css" href="style.css"></link>
+	<title>Columbus Happy Hours</title>
 </head>
 <body>
+	<div>
+		<img class="header-pic" src="happyhourbanner.png">
+	</div>
 	<h1>Columbus Happy Hours!</h1>
 	<div  th:each="current: ${allEstablishments}">
-	<ul>
-		<li th:text="${current.name + ' ' + current.address + ' lat:' + current.latitude + ' lng:' + current.longitude}" />
-	</ul>
-</div>
+		<ul>
+			<li th:text="${current.name + ' ' + current.address + ' lat:' + current.latitude + ' lng:' + current.longitude}" />
+		</ul>
+	</div>
+
+	<div id="googleMap"></div>
+
+
+	<script type="text/javascript" src="script.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvBn0qXhg90EpwLux8kRi4_NKEf6VphKg&callback=initMap"></script>
 </body>
 </html>
