@@ -18,6 +18,8 @@ public class Establishment {
 	private String latitude;
 	
 	private String longitude;
+	
+	private String phoneNumber;
 
 	public Long getEstablishmentId() {
 		return establishmentId;
@@ -38,12 +40,17 @@ public class Establishment {
 	public String getLongitude() {
 		return longitude;
 	}
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
-	public Establishment(String name, String address, String latitude, String longitude) {
+	public Establishment(String name, String address, String latitude, String longitude, String phoneNumber) {
 		this.name = name;
 		this.address = address;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.phoneNumber = phoneNumber;
 	}
 
 	// for jpa
