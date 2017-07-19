@@ -21,9 +21,9 @@
 	<h1>Columbus Happy Hours!</h1>
 
 	<div th:each="current: ${allEstablishments}">
-		<ul>
+		<ul id="establishmentsList">
 			<li
-				th:text="${current.name + ' ' + current.address + ' lat:' + current.latitude + ' lng:' + current.longitude}" />
+				th:text="${current.name + ' ' + current.address + ' lat:' + current.latitude + ' lng:' + current.longitude + ' Phone Number: ' + current.phoneNumber}" />
 		</ul>
 	</div>
 
