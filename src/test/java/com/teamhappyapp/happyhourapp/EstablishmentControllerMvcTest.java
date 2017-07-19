@@ -37,7 +37,7 @@ public class EstablishmentControllerMvcTest {
 		// singleton creates a set with one element 
 //		when(establishmentRepo.findAll()).thenReturn(Collections.singleton(establishment));
 		// perform a fake request for this url - good way to test w/out starting server
-		mvc.perform(get("/establishments")).andExpect(status().isOk());
+		mvc.perform(get("/establishment")).andExpect(status().isOk());
 	}
 
 }
