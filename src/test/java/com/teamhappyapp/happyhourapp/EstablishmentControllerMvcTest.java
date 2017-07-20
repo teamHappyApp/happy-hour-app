@@ -1,11 +1,7 @@
 package com.teamhappyapp.happyhourapp;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.Collection;
-import java.util.Collections;
 
 import javax.annotation.Resource;
 
@@ -37,7 +33,7 @@ public class EstablishmentControllerMvcTest {
 		// singleton creates a set with one element 
 //		when(establishmentRepo.findAll()).thenReturn(Collections.singleton(establishment));
 		// perform a fake request for this url - good way to test w/out starting server
-		mvc.perform(get("/establishment")).andExpect(status().isOk());
+		mvc.perform(get("/establishments")).andExpect(status().isOk());
 	}
 
 }

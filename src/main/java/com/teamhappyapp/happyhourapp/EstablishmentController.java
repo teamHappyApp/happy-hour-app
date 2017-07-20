@@ -12,6 +12,8 @@ public class EstablishmentController {
 	@Resource
 	private EstablishmentRepository establishmentRepo;
 	
+//	@Resource
+//	private ScheduleRepository scheduleRepo;
 
 	@RequestMapping("/establishments")
 	public String showAllEstablishments(Model model) {

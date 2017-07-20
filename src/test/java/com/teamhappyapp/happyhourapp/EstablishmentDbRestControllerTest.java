@@ -33,14 +33,12 @@ public class EstablishmentDbRestControllerTest {
 
 		// using a real object instead of a mock because JSON serializer doesn't
 		// understand mocks
-		Establishment establishment = new Establishment("test establishment", "foo", "bar", "baz", "867-5309");
+		Schedule fourToSix = new Schedule(4, 6);
+		Establishment establishment = new Establishment("test establishment", "foo", "bar", "baz", "867-5309", fourToSix);
 		when(establishmentRepo.findAll()).thenReturn(singleton(establishment));
 
 		mvc.perform(get("/establishmentDatabase")).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].name", is("test establishment")));
-		// or we can just check whether it's null
-		mvc.perform(get("/establishmentDatabase")).andExpect(status().isOk())
-				.andExpect(jsonPath("$[0]", is(not(nullValue()))));
 	}
 
 }

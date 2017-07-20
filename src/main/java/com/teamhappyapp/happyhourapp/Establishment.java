@@ -1,5 +1,6 @@
 package com.teamhappyapp.happyhourapp;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,7 +10,7 @@ public class Establishment {
 
 	@GeneratedValue
 	@Id
-	private Long establishmentId; // bc null
+	private Long id; // bc null
 
 	private String name;
 
@@ -21,8 +22,12 @@ public class Establishment {
 	
 	private String phoneNumber;
 
-	public Long getEstablishmentId() {
-		return establishmentId;
+	@Embedded
+	private Schedule schedule;
+
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -45,12 +50,16 @@ public class Establishment {
 		return phoneNumber;
 	}
 
-	public Establishment(String name, String address, String latitude, String longitude, String phoneNumber) {
+	public Schedule getSchedule() {
+		return schedule;
+	}
+	public Establishment(String name, String address, String latitude, String longitude, String phoneNumber, Schedule schedule) {
 		this.name = name;
 		this.address = address;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.phoneNumber = phoneNumber;
+		this.schedule = schedule;
 	}
 
 	// for jpa
