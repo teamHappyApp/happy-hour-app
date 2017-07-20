@@ -1,7 +1,5 @@
 package com.teamhappyapp.happyhourapp;
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.RequestMapping;
