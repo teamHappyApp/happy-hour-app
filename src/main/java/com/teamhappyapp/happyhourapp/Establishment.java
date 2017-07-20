@@ -25,7 +25,6 @@ public class Establishment {
 	@Embedded
 	private Schedule schedule;
 
-
 	public Long getId() {
 		return id;
 	}

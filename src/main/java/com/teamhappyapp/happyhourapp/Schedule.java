@@ -23,4 +23,9 @@ public class Schedule {
 	}
 	
 	private Schedule(){};
+	
+	@Override
+	public String toString() {
+		return "Start time: " + startTime + " End time:" + endTime;
+	}
 }

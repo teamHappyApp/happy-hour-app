@@ -12,13 +12,12 @@ public class EstablishmentController {
 	@Resource
 	private EstablishmentRepository establishmentRepo;
 	
-//	@Resource
-//	private ScheduleRepository scheduleRepo;
 
 	@RequestMapping("/establishments")
 	public String showAllEstablishments(Model model) {
 		Iterable<Establishment> establishments = establishmentRepo.findAll();
 		model.addAttribute("allEstablishments", establishments);
+
 		return "allEstablishmentsTemplate";
 	}
 
