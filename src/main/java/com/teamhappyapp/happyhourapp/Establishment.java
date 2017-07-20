@@ -3,6 +3,7 @@ package com.teamhappyapp.happyhourapp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Establishment {
@@ -20,6 +21,9 @@ public class Establishment {
 	private String longitude;
 	
 	private String phoneNumber;
+	
+	@ManyToOne
+	private Schedule schedule;
 
 	public Long getEstablishmentId() {
 		return establishmentId;
