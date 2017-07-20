@@ -22,12 +22,21 @@
 
 	<div th:each="current: ${allEstablishments}">
 		<ul id="establishmentsList">
+			<li th:text="${current.schedule}"/>
 			<li
 				th:text="${current.name + ' ' + current.address + ' lat:' + current.latitude + ' lng:' + current.longitude + ' Phone Number: ' + current.phoneNumber}" />
 		</ul>
 	</div>
 
+<div class="lower-page-container">
+<div class="filter-sidebar">
+	<h3>Filters</h3>
+	<ul class="schedule">
+	
+	</ul>
+</div>
 	<div id="googleMap"></div>
+</div>
 
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"
