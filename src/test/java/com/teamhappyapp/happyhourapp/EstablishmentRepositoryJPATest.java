@@ -28,7 +28,7 @@ public class EstablishmentRepositoryJPATest {
 	@Test
 	public void shouldReturnDemoInSet() {
 		establishmentRepo.save(testEstablishment);
-		establishmentRepo.findByScheduleStartTimeLessThanAndScheduleEndTimeGreaterThanEqual(6, 7);
+		establishmentRepo.findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(6, 7);
 	}
 
 }

@@ -30,7 +30,6 @@ public class EstablishmentDbRestControllerTest {
 
 	@Test
 	public void shouldRenderSingleEstablishment() throws Exception {
-
 		// using a real object instead of a mock because JSON serializer doesn't
 		// understand mocks
 		Schedule fourToSix = new Schedule(4, 6);
@@ -40,5 +39,19 @@ public class EstablishmentDbRestControllerTest {
 		mvc.perform(get("/establishmentDatabase")).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].name", is("test establishment")));
 	}
+
+	
+//	Need to ask brian how to build a test with pathvariables...
+//	@Test
+//	public void shouldRenderEstablishmentBySchedule() throws Exception {
+//		// using a real object instead of a mock because JSON serializer doesn't
+//		// understand mocks
+//		Schedule fourToSix = new Schedule(4, 6);
+//		Establishment establishment = new Establishment("test establishment", "foo", "bar", "baz", "867-5309", fourToSix);
+//		establishmentRepo.save(establishment);
+//		establishmentRepo.findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(windowBegin, windowEnd)		
+//		mvc.perform(get("establishmentsBySchedule/4/6")).andExpect(status().isOk())
+//				.andExpect(jsonPath("$[0].name", is("test establishment")));
+//	}
 
 }

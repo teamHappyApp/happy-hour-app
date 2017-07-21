@@ -3,130 +3,9 @@ function initMap() {
 		zoom : 10,
 		center : new google.maps.LatLng(40.016232, -83.011997),
 		mapTypeId : google.maps.MapTypeId.ROADMAP,
-	// styles: [
-	// {"featureType": "landscape",
-	// "stylers": [
-	// {"visibility": "on"},
-	// {"color": "#e7cd79"},
-	// {"weight": 0.1}]
-	// },
-	// {"featureType": "water",
-	// "stylers": [
-	// {"visibility": "simplified"},
-	// {"color": "#282828" }]
-	// },
-	// {"featureType": "landscape.natural.landcover",
-	// "elementType": "geometry",
-	// "stylers": [
-	// {"visibility": "on"},
-	// {"color": "#d6bc68"}]
-	// },
-	// {"featureType": "administrative.locality",
-	// "elementType": "geometry",
-	// "stylers": [
-	// {"visibility": "off"},
-	// {"color": "#d6bc68"}]
-	// },
-	// {"featureType": "road.arterial",
-	// "elementType": "geometry",
-	// "stylers": [
-	// {"visibility": "on"},
-	// {"color": "#d6bc68"}]
-	// },
-	// {"featureType": "poi",
-	// "elementType": "all",
-	// "stylers": [
-	// {"visibility": "on"},
-	// {"color": "#d6bc68"}]
-	// },
-	// {"featureType": "transit.station.airport",
-	// "elementType": "geometry.fill",
-	// "stylers": [
-	// {"visibility": "off"},
-	// {"color": "#d6bc68"}]
-	// },
-	// {"featureType": "poi"},
-	// {"featureType": "transit.line",
-	// "stylers": [
-	// {"color": "#d6bc68"},
-	// {"visibility": "on"}]
-	// },
-	// {"featureType": "road",
-	// "elementType": "geometry.stroke",
-	// "stylers": [
-	// {"visibility": "off"},
-	// {"weight": 1},
-	// {"color": "#e9d9a6"}]
-	// },
-	// {"featureType": "road",
-	// "elementType": "geometry",
-	// "stylers": [
-	// {"visibility": "simplified"},
-	// {"color": "#e9d9a6"}]
-	// },
-	// {"featureType": "road.highway",
-	// "elementType": "geometry",
-	// "stylers": [
-	// {"visibility": "simplified"},
-	// {"color": "#e9d9a6"}]
-	// },
-	// {"featureType": "poi.business",
-	// "stylers": [
-	// {"color": "#e9d9a6"},
-	// {"visibility": "on"}]
-	// },
-	// {"featureType": "poi.government",
-	// "stylers": [
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "poi.school",
-	// "stylers": [
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "administrative",
-	// "stylers": [
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "poi.medical",
-	// "stylers": [
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "poi.attraction",
-	// "elementType": "geometry",
-	// "stylers": [
-	// {"visibility": "off"},
-	// {"color": "#cfb665"}]
-	// },
-	// {"featureType": "poi.place_of_worship",
-	// "stylers": [
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "poi.sports_complex",
-	// "stylers": [
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "road.arterial",
-	// "elementType": "labels.text.stroke",
-	// "stylers": [
-	// {"color": "#cfb665"},
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "road.highway",
-	// "elementType": "labels.text",
-	// "stylers": [
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "road.highway.controlled_access",
-	// "stylers": [
-	// {"visibility": "off"}]
-	// },
-	// {"featureType": "road",
-	// "stylers": [
-	// {"visibility": "on"}]
-	// }
-	// ]
+	// styles:
 
-	});
+});
 
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -145,8 +24,8 @@ function initMap() {
 				infoWindowContent[i] = setInfoWindow(establishment);
 
 				location = new google.maps.LatLng(
-						allEstablishments[i].latitude,
-						allEstablishments[i].longitude);
+					allEstablishments[i].latitude,
+					allEstablishments[i].longitude);
 
 				marker = new google.maps.Marker({
 					position : location,
@@ -154,7 +33,7 @@ function initMap() {
 				});
 
 				google.maps.event.addListener(marker, 'click', (function(
-						marker, i) {
+					marker, i) {
 					return function() {
 						var infoWindow = new google.maps.InfoWindow({
 							content : infoWindowContent[i]
@@ -174,17 +53,63 @@ function initMap() {
 	}
 	xhttp.open("GET", "/establishmentDatabase", true);
 	xhttp.send();
-
 }
 
 $(window).scroll(function() {
-	if ($(this).scrollTop() > 60) /*
-									 * height in pixels when the navbar becomes
-									 * non opaque
-									 */
-	{
-		$('.navbar').addClass('opaque');
-	} else {
-		$('.navbar').removeClass('opaque');
-	}
+	if ($(this).scrollTop() > 60) 
+	/* height in pixels when the navbar becomes non opaque */
+{
+	$('.navbar').addClass('opaque');
+} else {
+	$('.navbar').removeClass('opaque');
+}
+});
+
+var generateMarkersByTime = function(jsonResponse) {
+  var contentDiv = $('.content');
+  contentDiv.empty();
+  contentDiv.append('<img src="' + jsonResponse.avatar_url + '" style="width: 100px;" />');
+  var linksList = $('<ul></ul>');
+  for(attributeName in jsonResponse) {
+    if(attributeName.endsWith('_url')) {
+      linksList.append('<li><a href="' + jsonResponse[attributeName] + '">' + attributeName + '</a></li>');
+    }
+  }
+  contentDiv.append(linksList);
+}
+
+var writeFailureToConsole = function(response, status, errorThrown) {
+  alert("Sorry, there was a problem!");
+  console.log("Error: " + errorThrown);
+  console.log("Status: " + status);
+  console.log(response);
+};
+
+var performRequest = function(profileUrl, successFunction) {
+  var options = { // options is an object described using JSON
+    url: profileUrl,
+    type: "GET", // request method -- usually "GET" or "POST"
+    dataType: "json" // the type of response we're expecting
+  };
+  $.ajax(options).done(successFunction).fail(writeFailureToConsole);
+};
+
+$(document).ready(function() {
+  
+  $('button[name="writeToConsole"]').on('click', function() {
+    var selectedUser = $('input[name="userId"]').val();
+    console.log("Selected user is " + selectedUser);
+    performRequest("https://api.github.com/users/" + selectedUser, writeResponseToConsole);  
+  });
+  
+  $('button[name="cause404"]').on('click', function() {
+    // leaving out the success function since I know it won't succeed
+    performRequest("https://api.github.com/thisLinksSoBadBabyItDontCare");
+  });
+  
+  $('button[name="generateElements"]').on('click', function() {
+    var selectedUser = $('input[name="userId"]').val();
+    console.log("Selected user is " + selectedUser);
+    performRequest("https://api.github.com/users/" + selectedUser, generateElements);  
+  });
 });
