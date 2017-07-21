@@ -131,22 +131,28 @@ function initMap() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			var establishments = JSON.parse(xhttp.responseText);
+			var allEstablishments = JSON.parse(xhttp.responseText);
 
-			var infoWindowContent = [];
+			var infoWindowContent = []; // creating empty array to hold current
+			// iteration of json
 			var location;
+			var establishment;
 
-			for (var i = 0; i < establishments.length; i++) {
-				infoWindowContent[i] = establishments[i].name + establishments[i].phoneNumber;
-				location = new google.maps.LatLng(establishments[i].latitude,
-						establishments[i].longitude);
+			for (var i = 0; i < allEstablishments.length; i++) {
+				establishment = allEstablishments[i];
+				// see function below - infoWindowContent at that index gets set
+				// to establishment info for info window
+				infoWindowContent[i] = setInfoWindow(establishment);
+
+				location = new google.maps.LatLng(
+						allEstablishments[i].latitude,
+						allEstablishments[i].longitude);
 
 				marker = new google.maps.Marker({
 					position : location,
 					map : map
 				});
-				
-				
+
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, i) {
 					return function() {
@@ -157,6 +163,12 @@ function initMap() {
 					}
 				})(marker, i));
 
+			}
+			// function to return all content for the infoWindow - establishment
+			// is set to the relevant index in the above for loop
+			function setInfoWindow(establishment) {
+				var stringContent = '<h3>' + establishment.name + '</h3>';
+				return stringContent;
 			}
 		}
 	}
