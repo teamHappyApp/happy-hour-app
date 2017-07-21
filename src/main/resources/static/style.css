@@ -26,6 +26,12 @@ body {
 	width: 300px;
 }
 
+.schedule-filter {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
 #googleMap {
 	margin-left: 20px;
 	width: 600px;
