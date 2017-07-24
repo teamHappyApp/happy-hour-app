@@ -5,15 +5,15 @@ function initMap() {
 		mapTypeId : google.maps.MapTypeId.ROADMAP,
 	// styles:
 
-});
+	});
 
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var allEstablishments = JSON.parse(xhttp.responseText);
 
-			var infoWindowContent = []; // creating empty array to hold current
-			// iteration of json
+			var infoWindowContent = [];
+			// creating empty array to hold current iteration of json
 			var location;
 			var establishment;
 
@@ -24,8 +24,8 @@ function initMap() {
 				infoWindowContent[i] = setInfoWindow(establishment);
 
 				location = new google.maps.LatLng(
-					allEstablishments[i].latitude,
-					allEstablishments[i].longitude);
+						allEstablishments[i].latitude,
+						allEstablishments[i].longitude);
 
 				marker = new google.maps.Marker({
 					position : location,
@@ -33,7 +33,7 @@ function initMap() {
 				});
 
 				google.maps.event.addListener(marker, 'click', (function(
-					marker, i) {
+						marker, i) {
 					return function() {
 						var infoWindow = new google.maps.InfoWindow({
 							content : infoWindowContent[i]
@@ -51,65 +51,73 @@ function initMap() {
 			}
 		}
 	}
-	xhttp.open("GET", "/establishmentDatabase", true);
+	
+	var clicked = false;
+	var markerUrl;
+	$('.generateMarkersByTime').click(function(){
+		if (clicked) {
+			markerUrl = "/establishmentDatabase";
+		} else if (clicked) {
+			markerUrl = "/establishmentsBySchedule/4/8";
+		}
+	});
+	
+	xhttp.open("GET", markerUrl, true);
 	xhttp.send();
 }
 
 $(window).scroll(function() {
-	if ($(this).scrollTop() > 60) 
+	if ($(this).scrollTop() > 60)
 	/* height in pixels when the navbar becomes non opaque */
-{
-	$('.navbar').addClass('opaque');
-} else {
-	$('.navbar').removeClass('opaque');
-}
+	{
+		$('.navbar').addClass('opaque');
+	} else {
+		$('.navbar').removeClass('opaque');
+	}
 });
 
-var generateMarkersByTime = function(jsonResponse) {
-  var contentDiv = $('.content');
-  contentDiv.empty();
-  contentDiv.append('<img src="' + jsonResponse.avatar_url + '" style="width: 100px;" />');
-  var linksList = $('<ul></ul>');
-  for(attributeName in jsonResponse) {
-    if(attributeName.endsWith('_url')) {
-      linksList.append('<li><a href="' + jsonResponse[attributeName] + '">' + attributeName + '</a></li>');
-    }
-  }
-  contentDiv.append(linksList);
+var writeResponseToConsole = function(jsonResponse) {
+	console.log("Response:");
+	console.log(jsonResponse);
+};
+
+var generateElements = function(jsonResponse) {
+	var byScheduleDiv = $('#schedule-content');
+	byScheduleDiv.empty();
+	var establishmentsList = $('<ul></ul>');
+	for (var idx = 0; idx < jsonResponse.length; idx++) {
+		establishmentsList.append('<li>' + jsonResponse[idx].name + '</li>');
+	}
+	byScheduleDiv.append(establishmentsList);
 }
 
 var writeFailureToConsole = function(response, status, errorThrown) {
-  alert("Sorry, there was a problem!");
-  console.log("Error: " + errorThrown);
-  console.log("Status: " + status);
-  console.log(response);
+	alert("Sorry, there was a problem!");
+	console.log("Error: " + errorThrown);
+	console.log("Status: " + status);
+	console.log(response);
 };
 
-var performRequest = function(profileUrl, successFunction) {
-  var options = { // options is an object described using JSON
-    url: profileUrl,
-    type: "GET", // request method -- usually "GET" or "POST"
-    dataType: "json" // the type of response we're expecting
-  };
-  $.ajax(options).done(successFunction).fail(writeFailureToConsole);
+var performRequest = function(scheduleUrl, successFunction) {
+	var options = { // options is an object described using JSON
+		url : scheduleUrl,
+		type : "GET", // request method -- usually "GET" or "POST"
+		dataType : "json" // the type of response we're expecting
+	};
+	$.ajax(options).done(successFunction).fail(writeFailureToConsole);
 };
 
-$(document).ready(function() {
-  
-  $('button[name="writeToConsole"]').on('click', function() {
-    var selectedUser = $('input[name="userId"]').val();
-    console.log("Selected user is " + selectedUser);
-    performRequest("https://api.github.com/users/" + selectedUser, writeResponseToConsole);  
-  });
-  
-  $('button[name="cause404"]').on('click', function() {
-    // leaving out the success function since I know it won't succeed
-    performRequest("https://api.github.com/thisLinksSoBadBabyItDontCare");
-  });
-  
-  $('button[name="generateElements"]').on('click', function() {
-    var selectedUser = $('input[name="userId"]').val();
-    console.log("Selected user is " + selectedUser);
-    performRequest("https://api.github.com/users/" + selectedUser, generateElements);  
-  });
-});
+$(document).ready(
+		function() {
+			$('button[name="generateMarkersByTime"]').on(
+					'click',
+					function() {
+						var windowBegin = $('input[name="startTime"]').val();
+						var windowEnd = $('input[name="endTime"]').val();
+						console.log("Selected times are " + windowBegin + " "
+								+ windowEnd);
+						performRequest("/establishmentsBySchedule/"
+								+ windowBegin + "/" + windowEnd,
+								generateElements);
+					});
+		});
