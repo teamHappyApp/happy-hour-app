@@ -19,6 +19,7 @@ public class EstablishmentDbRestController {
 		return establishments;
 	}
 	
+	// returns JSON by schedule of interest
 	@RequestMapping("/establishmentsBySchedule/{windowBegin}/{windowEnd}")
 	public Iterable<Establishment> establishmentsBySchedule(@PathVariable  int windowBegin, @PathVariable int windowEnd){
 		Iterable<Establishment> establishmentsBySchedule = establishmentRepo.findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(windowBegin, windowEnd);
