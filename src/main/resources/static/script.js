@@ -1,10 +1,8 @@
-function initMap() {
+var initMap = function(jsonResponseUrl) {
 	var map = new google.maps.Map(document.getElementById('googleMap'), {
 		zoom : 10,
 		center : new google.maps.LatLng(40.016232, -83.011997),
 		mapTypeId : google.maps.MapTypeId.ROADMAP,
-	// styles:
-
 	});
 
 	var xhttp = new XMLHttpRequest();
@@ -24,8 +22,8 @@ function initMap() {
 				infoWindowContent[i] = setInfoWindow(establishment);
 
 				location = new google.maps.LatLng(
-						allEstablishments[i].latitude,
-						allEstablishments[i].longitude);
+					allEstablishments[i].latitude,
+					allEstablishments[i].longitude);
 
 				marker = new google.maps.Marker({
 					position : location,
@@ -33,7 +31,7 @@ function initMap() {
 				});
 
 				google.maps.event.addListener(marker, 'click', (function(
-						marker, i) {
+					marker, i) {
 					return function() {
 						var infoWindow = new google.maps.InfoWindow({
 							content : infoWindowContent[i]
@@ -41,7 +39,6 @@ function initMap() {
 						infoWindow.open(map, this);
 					}
 				})(marker, i));
-
 			}
 			// function to return all content for the infoWindow - establishment
 			// is set to the relevant index in the above for loop
@@ -52,23 +49,13 @@ function initMap() {
 		}
 	}
 	
-	var clicked = false;
-	var markerUrl;
-	$('.generateMarkersByTime').click(function(){
-		if (clicked) {
-			markerUrl = "/establishmentDatabase";
-		} else if (clicked) {
-			markerUrl = "/establishmentsBySchedule/4/8";
-		}
-	});
-	
-	xhttp.open("GET", markerUrl, true);
+	xhttp.open("GET", jsonResponseUrl, true);
 	xhttp.send();
 }
 
 $(window).scroll(function() {
 	if ($(this).scrollTop() > 60)
-	/* height in pixels when the navbar becomes non opaque */
+		/* height in pixels when the navbar becomes non opaque */
 	{
 		$('.navbar').addClass('opaque');
 	} else {
@@ -76,12 +63,7 @@ $(window).scroll(function() {
 	}
 });
 
-var writeResponseToConsole = function(jsonResponse) {
-	console.log("Response:");
-	console.log(jsonResponse);
-};
-
-var generateElements = function(jsonResponse) {
+/*var generateElements = function(jsonResponse) {
 	var byScheduleDiv = $('#schedule-content');
 	byScheduleDiv.empty();
 	var establishmentsList = $('<ul></ul>');
@@ -105,19 +87,18 @@ var performRequest = function(scheduleUrl, successFunction) {
 		dataType : "json" // the type of response we're expecting
 	};
 	$.ajax(options).done(successFunction).fail(writeFailureToConsole);
-};
+};*/
 
 $(document).ready(
-		function() {
-			$('button[name="generateMarkersByTime"]').on(
-					'click',
-					function() {
-						var windowBegin = $('input[name="startTime"]').val();
-						var windowEnd = $('input[name="endTime"]').val();
-						console.log("Selected times are " + windowBegin + " "
-								+ windowEnd);
-						performRequest("/establishmentsBySchedule/"
-								+ windowBegin + "/" + windowEnd,
-								generateElements);
-					});
-		});
+	function() {
+		initMap("/establishmentDatabase");
+		
+		$('button[name="generateMarkersByTime"]').on(
+			'click',
+			function() {
+				var windowBegin = $('input[name="startTime"]').val();
+				var windowEnd = $('input[name="endTime"]').val();
+				initMap("/establishmentsBySchedule/"
+						+ windowBegin + "/" + windowEnd);
+			});
+	});
