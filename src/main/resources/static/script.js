@@ -3,8 +3,6 @@ function initMap() {
 		zoom : 10,
 		center : new google.maps.LatLng(40.016232, -83.011997),
 		mapTypeId : google.maps.MapTypeId.ROADMAP,
-	// styles:
-
 	});
 
 	var xhttp = new XMLHttpRequest();
@@ -24,8 +22,8 @@ function initMap() {
 				infoWindowContent[i] = setInfoWindow(establishment);
 
 				location = new google.maps.LatLng(
-						allEstablishments[i].latitude,
-						allEstablishments[i].longitude);
+					allEstablishments[i].latitude,
+					allEstablishments[i].longitude);
 
 				marker = new google.maps.Marker({
 					position : location,
@@ -33,7 +31,7 @@ function initMap() {
 				});
 
 				google.maps.event.addListener(marker, 'click', (function(
-						marker, i) {
+					marker, i) {
 					return function() {
 						var infoWindow = new google.maps.InfoWindow({
 							content : infoWindowContent[i]
@@ -52,34 +50,30 @@ function initMap() {
 		}
 	}
 	
+	var jsonResponseUrl = "/establishmentDatabase";
 	var clicked = false;
-	var markerUrl;
-	$('.generateMarkersByTime').click(function(){
-		if (clicked) {
-			markerUrl = "/establishmentDatabase";
-		} else if (clicked) {
-			markerUrl = "/establishmentsBySchedule/4/8";
-		}
-	});
 	
-	xhttp.open("GET", markerUrl, true);
+	document.getElementById('generateMarkersByTime').onclick = function() {
+		clicked = true;
+	}
+	
+	if (clicked) {
+		jsonResponseUrl = "/establishmentsBySchedule/4/8"
+	}
+	
+	xhttp.open("GET", jsonResponseUrl, true);
 	xhttp.send();
 }
 
 $(window).scroll(function() {
 	if ($(this).scrollTop() > 60)
-	/* height in pixels when the navbar becomes non opaque */
+		/* height in pixels when the navbar becomes non opaque */
 	{
 		$('.navbar').addClass('opaque');
 	} else {
 		$('.navbar').removeClass('opaque');
 	}
 });
-
-var writeResponseToConsole = function(jsonResponse) {
-	console.log("Response:");
-	console.log(jsonResponse);
-};
 
 var generateElements = function(jsonResponse) {
 	var byScheduleDiv = $('#schedule-content');
@@ -108,16 +102,18 @@ var performRequest = function(scheduleUrl, successFunction) {
 };
 
 $(document).ready(
-		function() {
-			$('button[name="generateMarkersByTime"]').on(
-					'click',
-					function() {
-						var windowBegin = $('input[name="startTime"]').val();
-						var windowEnd = $('input[name="endTime"]').val();
-						console.log("Selected times are " + windowBegin + " "
-								+ windowEnd);
-						performRequest("/establishmentsBySchedule/"
-								+ windowBegin + "/" + windowEnd,
-								generateElements);
-					});
-		});
+	function() {
+		$('button[name="generateMarkersByTime"]').on(
+			'click',
+			function() {
+				var windowBegin = $('input[name="startTime"]').val();
+				var windowEnd = $('input[name="endTime"]').val();
+				console.log("Selected times are " + windowBegin + " "
+					+ windowEnd);
+				performRequest("/establishmentsBySchedule/"
+					+ windowBegin + "/" + windowEnd,
+					generateElements);
+				
+				initMap();
+			});
+	});
