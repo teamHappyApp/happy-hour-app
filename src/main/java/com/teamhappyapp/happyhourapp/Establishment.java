@@ -1,9 +1,14 @@
 package com.teamhappyapp.happyhourapp;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Establishment {
@@ -12,6 +17,10 @@ public class Establishment {
 	@Id
 	private Long id; // bc null
 
+	@ManyToMany
+	private Set<Filter> filters;
+	
+	
 	private String name;
 
 	private String address;
@@ -25,9 +34,16 @@ public class Establishment {
 	@Embedded
 	private Schedule schedule;
 
+
+
 	public Long getId() {
 		return id;
 	}
+	
+	public Set<Filter> getFilters() {
+		return filters;
+	}
+
 
 	public String getName() {
 		return name;
@@ -52,6 +68,8 @@ public class Establishment {
 	public Schedule getSchedule() {
 		return schedule;
 	}
+	
+	
 	public Establishment(String name, String address, String latitude, String longitude, String phoneNumber, Schedule schedule) {
 		this.name = name;
 		this.address = address;
@@ -59,6 +77,11 @@ public class Establishment {
 		this.longitude = longitude;
 		this.phoneNumber = phoneNumber;
 		this.schedule = schedule;
+	}
+	
+	public Establishment(String name, String address, String latitude, String longitude, String phoneNumber, Schedule schedule, Filter...filters) {
+		this(name, address, latitude, longitude, phoneNumber, schedule);
+		this.filters = new HashSet<>(Arrays.asList(filters));
 	}
 
 	// for jpa
