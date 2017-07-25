@@ -25,6 +25,9 @@ public class EstablishmentDbRestControllerTest {
 	@MockBean
 	private EstablishmentRepository establishmentRepo;
 
+	@MockBean
+	private FilterRepository filterRepo;
+
 	@Test
 	public void shouldRenderSingleEstablishment() throws Exception {
 		// using a real object instead of a mock because JSON serializer doesn't
@@ -52,5 +55,16 @@ public class EstablishmentDbRestControllerTest {
 
 		mvc.perform(get("/establishmentsBySchedule/4/6")).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].name", is("test establishment")));
+	}
+	
+	@Test
+	public void shouldRenderEstablishmentByPatioFilter() throws Exception {
+		Schedule fourToSix = new Schedule(4, 6);
+		Filter[] filters = {new Filter("patio")};
+		Establishment establishment = new Establishment("test establishment", "foo", "bar", "baz", "867-5309", fourToSix, filters);
+		when(establishmentRepo.findByFilterName("patio")).thenReturn(singleton(establishment));
+		
+		mvc.perform(get("/establishmentsByFilter/patio")).andExpect(status().isOk())
+		.andExpect(jsonPath("$[0].name", is("test establishment")));
 	}
 }

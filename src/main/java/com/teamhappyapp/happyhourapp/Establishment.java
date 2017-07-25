@@ -17,6 +17,7 @@ public class Establishment {
 	@Id
 	private Long id; // bc null
 
+	
 	@ManyToMany
 	private Set<Filter> filters;
 	
