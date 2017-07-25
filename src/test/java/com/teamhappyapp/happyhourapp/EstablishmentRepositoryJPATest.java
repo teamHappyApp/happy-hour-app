@@ -28,18 +28,20 @@ public class EstablishmentRepositoryJPATest {
 	@Before
 	public void createTestEstablishment() {
 		testSchedule = new Schedule(5, 8);
-		testEstablishment = new Establishment("name", "address", "lat", "long", "phone", testSchedule);
-	}
-
-	@Test
-	public void shouldSaveEstablishmentWithFilter() {
 		testEstablishment = new Establishment("name", "address", "lat", "long", "phone", testSchedule, filters);
 	}
 
+
+	
 	@Test
 	public void shouldReturnDemoInSet() {
 		establishmentRepo.save(testEstablishment);
 		establishmentRepo.findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(6, 7);
 	}
 
+//	@Test
+//	public void shouldReturnDemoByFilter() {
+//		establishmentRepo.save(testEstablishment);
+//		establishmentRepo.findByFilterName("patio");
+//	}
 }

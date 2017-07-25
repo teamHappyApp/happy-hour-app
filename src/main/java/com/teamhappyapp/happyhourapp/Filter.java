@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Filter {
 
@@ -16,6 +18,7 @@ public class Filter {
 
 	private String name;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "filters")
 	private Set<Establishment> establishments;
 
