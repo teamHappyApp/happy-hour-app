@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css"></link>
 <title>Columbus Happy Hours</title>
@@ -7,7 +7,7 @@
 <body>
 	<header>
 		<nav class="navbar">
-			<img class="logo" src="/images/happy.jpg" />
+			<img class="logo" src="images/happy.jpg" />
 			<ul>
 				<li><a href="#">Home</a></li>
 				<li><a href="#">About</a></li>
@@ -15,18 +15,11 @@
 		</nav>
 	</header>
 	<div>
-		<img class="header-pic" src="/images/happyhourbanner.png" />
+		<img class="header-pic" src="images/happyhourbanner.png" />
 	</div>
 
 	<h1>Columbus Happy Hours!</h1>
 
-	<div th:each="current: ${allEstablishments}">
-		<ul id="establishmentsList">
-			<li th:text="${current.schedule}" />
-			<li
-				th:text="${current.name + ' ' + current.address + ' lat:' + current.latitude + ' lng:' + current.longitude + ' Phone Number: ' + current.phoneNumber}" />
-		</ul>
-	</div>
 
 	<div class="lower-page-container">
 		<div class="filter-sidebar">

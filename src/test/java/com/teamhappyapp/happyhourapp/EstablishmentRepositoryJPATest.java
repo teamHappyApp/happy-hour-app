@@ -39,9 +39,9 @@ public class EstablishmentRepositoryJPATest {
 		establishmentRepo.findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(6, 7);
 	}
 
-	@Test
-	public void shouldReturnDemoByFilter() {
-		establishmentRepo.save(testEstablishment);
-		establishmentRepo.findByFilterName("patio");
-	}
+//	@Test
+//	public void shouldReturnDemoByFilter() {
+//		establishmentRepo.save(testEstablishment);
+//		establishmentRepo.findByFilterName("patio");
+//	}
 }

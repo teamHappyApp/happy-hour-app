@@ -91,14 +91,14 @@ var performRequest = function(scheduleUrl, successFunction) {
 
 $(document).ready(
 	function() {
-		initMap("/establishmentDatabase");
+		initMap("http://localhost:8080/establishments");
 		
 		$('button[name="generateMarkersByTime"]').on(
 			'click',
 			function() {
 				var windowBegin = $('input[name="startTime"]').val();
 				var windowEnd = $('input[name="endTime"]').val();
-				initMap("/establishmentsBySchedule/"
+				initMap("http://localhost:8080/establishments/bySchedule/"
 						+ windowBegin + "/" + windowEnd);
 			});
 	});
