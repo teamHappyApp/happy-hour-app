@@ -50,12 +50,12 @@ public class EstablishmentRepositoryJpaTest {
 		Filter patioFilter = filterRepo.save(new Filter("patio"));
 		Filter karaokeFilter = filterRepo.save(new Filter("karaoke"));
 		Schedule irrelevant = new Schedule(11, 12);
-		
+		String[] filterName = {"patio"};
 		// you can pass zero or more arguments for varargs, don't need an array
 		Establishment patioAndKaraokeEst = createAndSaveTestEstablishment("Bar with patio and karaoke", irrelevant, patioFilter, karaokeFilter);
 		createAndSaveTestEstablishment("Bar with karaoke only", irrelevant, karaokeFilter);
 		
-		Set<Establishment> results = establishmentRepo.findByFiltersNameIgnoreCase(patioFilter.getName());
+		Set<Establishment> results = establishmentRepo.findByFiltersName(filterName);
 
 		// assert that only the establishment with patio was returned
 		assertThat(results, contains(patioAndKaraokeEst));
