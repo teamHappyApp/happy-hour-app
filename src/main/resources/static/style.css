@@ -80,3 +80,8 @@ body {
 	padding: 5px;
 	color: white;
 }
+
+.info-window-header {
+	background-color: black;
+	color:white;
+}
