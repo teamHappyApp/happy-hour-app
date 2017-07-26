@@ -43,11 +43,19 @@ var initMap = function(jsonResponseUrl) {
 			// function to return all content for the infoWindow - establishment
 			// is set to the relevant index in the above for loop
 			function setInfoWindow(establishment) {
-				var stringContent = '<h3>' + establishment.name + '</h3>' +
-				'<p>' + establishment.address + '</p>'+
-				'<p>' + establishment.phoneNumber + '</p>' +
-//				'<p>' + establishment.schedule + '</p>' +
-//				'<p>' + (establishment.filters.length > 0? establishment.filters[0].name: 'none') + '</p>';
+				var stringContent = 	'<div id="iw-container">' +
+					 						'<div class="iw-title">'  + establishment.name + '</div>' +
+					 						'<div class="iw-content">' +
+								 				'<div class="iw-subTitle"></div>' +
+									 			'<img src="images/TheLittleBar.jpg" alt="TheLittleBar.jpg" height="115" width="83">' +
+									 			'<h3>' + establishment.name + '</h3>' +
+									 			'<p>' + establishment.address + '</p>'+
+									 			'<p>' + establishment.phoneNumber + '</p>' +
+												'<p>' + establishment.schedule + '</p>' +
+												'<p>' + (establishment.filters.length > 0? establishment.filters[0].name: 'none') + '</p>' +
+												'</div>' +
+											'<div class="iw-bottom-gradient"></div>'+ 
+										'</div>'
 				return stringContent;
 			}
 		}
