@@ -14,6 +14,9 @@ public class EstablishmentController {
 
 	@Resource
 	private FilterRepository filterRepo;
+	
+	@Resource
+	private FilteredEstablishmentRepository filteredEstabRepo;
 
 	// creates JSON for ALL establishments
 	@RequestMapping("/establishments")
@@ -33,8 +36,8 @@ public class EstablishmentController {
 
 	
 	@RequestMapping("/establishments/byFilter/{name}")
-	public Iterable<Establishment> establishmentsByFilter(@PathVariable String name) {
-		Iterable<Establishment> establishmentsByFilter = establishmentRepo.findByFiltersNameIgnoreCase(name);
+	public Iterable<Establishment> establishmentsByFilter(@PathVariable String[] name) {
+		Iterable<Establishment> establishmentsByFilter = filteredEstabRepo.findForFiltersNamed(name);
 		return establishmentsByFilter;
 	}
 

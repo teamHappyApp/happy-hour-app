@@ -1,7 +1,7 @@
 var initMap = function(jsonResponseUrl) {
 	var map = new google.maps.Map(document.getElementById('googleMap'), {
 		zoom : 10,
-		center : new google.maps.LatLng(40.016232, -83.011997),
+		center : new google.maps.LatLng(39.9612, -82.9988),
 		mapTypeId : google.maps.MapTypeId.ROADMAP,
 	});
 
@@ -95,9 +95,26 @@ $(document).ready(
 			});
 		$('button[name="generateMarkersByFilter"]').on('click',
 				function() {
-			if(document.getElementById('patio').checked){
-			initMap("http://localhost:8080/establishments/byFilter/patio");
-			}
+			var $filterName = $('.filter-name');
+			$filterName.on('change', function(){
+				var selectedFilters = {};
+				$filterName.filter(':checked').each(function(){
+//					if(!selctedFilters.hasOwnProperty(this.name)){
+//						selectedFilters[this.name] = [];
+//					} 
+					selectedFilters[this.name];
+				});
+				initMap("http://localhost:8080/establishments/byFilter/selectedFilters");
 			});
+		});
+				
+//				function() {
+//			var filterName;
+//			if(document.getElementById('patio').checked){
+//			initMap("http://localhost:8080/establishments/byFilter/patio");
+//			} else if(document.getElementById('off-street-parking').checked) {
+//				initMap("http://localhost:8080/establishments/byFilter/off-street-parking");
+//			}
+//			});
 			
 	});
