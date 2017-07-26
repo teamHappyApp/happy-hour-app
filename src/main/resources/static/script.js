@@ -105,18 +105,15 @@ $(document).ready(
 				initMap("http://localhost:8080/establishments/bySchedule/"
 						+ windowBegin + "/" + windowEnd);
 			});
+		
+		
 		$('button[name="generateMarkersByFilter"]').on('click',
 				function() {
-			var $filterName = $('.filter-name');
-			$filterName.on('change', function(){
-				var selectedFilters = {};
-				$filterName.filter(':checked').each(function(){
-//					if(!selctedFilters.hasOwnProperty(this.name)){
-//						selectedFilters[this.name] = [];
-//					} 
-					selectedFilters[this.name];
-				});
-				initMap("http://localhost:8080/establishments/byFilter/selectedFilters");
+			var selectedFilters = [];
+			$(".filter-name:checked").each(function() {
+			    selectedFilters.push(this.name);
+			});
+				initMap("http://localhost:8080/establishments/byFilter/" + selectedFilters);
 			});
 		});
 				
@@ -128,5 +125,4 @@ $(document).ready(
 //				initMap("http://localhost:8080/establishments/byFilter/off-street-parking");
 //			}
 //			});
-			
-	});
+
