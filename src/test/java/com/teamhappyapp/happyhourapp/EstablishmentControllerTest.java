@@ -62,7 +62,7 @@ public class EstablishmentControllerTest {
 		Schedule fourToSix = new Schedule(4, 6);
 		Filter patio = new Filter("patio");
 		Establishment establishment = new Establishment("test establishment", "foo", "bar", "baz", "867-5309", fourToSix, patio);
-		when(filterRepo.findByNameIgnoreCase("patio").getEstablishments()).thenReturn(singleton(establishment));
+		when(establishmentRepo.findByFiltersNameIgnoreCase("patio")).thenReturn(singleton(establishment));
 		
 		mvc.perform(get("/establishments/byFilter/patio")).andExpect(status().isOk())
 		.andExpect(jsonPath("$[0].name", is("test establishment")));

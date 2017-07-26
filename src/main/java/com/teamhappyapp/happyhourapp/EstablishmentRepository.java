@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface EstablishmentRepository extends CrudRepository<Establishment, Long> {
 
 	Set<Establishment> findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(int windowBegin, int windowEnd);
-//	Set<Establishment> findByFilterName(String name);
+	Set<Establishment> findByFiltersNameIgnoreCase(String name);
 }
