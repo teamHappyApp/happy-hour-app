@@ -34,8 +34,7 @@ public class EstablishmentController {
 	
 	@RequestMapping("/establishments/byFilter/{name}")
 	public Iterable<Establishment> establishmentsByFilter(@PathVariable String name) {
-		Filter filter = filterRepo.findByNameIgnoreCase(name);
-		Iterable<Establishment> establishmentsByFilter = filter.getEstablishments();
+		Iterable<Establishment> establishmentsByFilter = establishmentRepo.findByFiltersNameIgnoreCase(name);
 		return establishmentsByFilter;
 	}
 
