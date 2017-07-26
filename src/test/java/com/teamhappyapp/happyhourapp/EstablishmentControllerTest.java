@@ -27,6 +27,9 @@ public class EstablishmentControllerTest {
 
 	@MockBean
 	private FilterRepository filterRepo;
+	
+	@MockBean
+	private FilteredEstablishmentRepository filteredEstabRepo;
 
 	@Test
 	public void shouldRenderSingleEstablishment() throws Exception {
@@ -63,7 +66,7 @@ public class EstablishmentControllerTest {
 		Filter patio = new Filter("patio");
 		String[] filterName = {"patio"};
 		Establishment establishment = new Establishment("test establishment", "foo", "bar", "baz", "867-5309", fourToSix, patio);
-		when(establishmentRepo.findByFiltersName(filterName)).thenReturn(singleton(establishment));
+		when(filteredEstabRepo.findForFiltersNamed(filterName)).thenReturn(singleton(establishment));
 		
 		mvc.perform(get("/establishments/byFilter/patio")).andExpect(status().isOk())
 		.andExpect(jsonPath("$[0].name", is("test establishment")));
