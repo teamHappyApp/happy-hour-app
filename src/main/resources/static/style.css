@@ -78,11 +78,15 @@ body {
 	color: white;
 }
 
- .gm-style-iw {
-	background-color: black!important;
-	width: auto!important;
-	height: auto;
-	margin: 0!important;
+ .gm-style .gm-style-iw {
+	background-color: white;
+	top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 120px !important; 
+    padding-bottom: 10px;
+    display: block !important;
 } 
 
 #iw-container .iw-title {
@@ -91,24 +95,17 @@ body {
 	font-weight: 400;
 	padding: 10px;
 	color: white;
-	width: 300px;
+	background-color: black;
+	text-align: center;
 }
 
-#iw-container .iw-content {
+.gm-style #iw-container .iw-content {
 	font-size: 13px;
 	line-height: 18px;
 	font-weight: 400;
-	margin-right: 1px;
 	padding: 15px 5px 20px 15px;
 	max-height: 140px;
-	overflow-y: auto;
-	overflow-x: hidden;
-	color: white;
-}
-
-.iw-content img {
-	float: right;
-	margin: 0 5px 5px 10px;	
+	color: black;
 }
 
 /*
@@ -124,10 +121,4 @@ body {
 	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
 } */
 
-#iw-container {
-	width: auto;
-	height: auto;
-	background-color: black;
-	
-	}
 
