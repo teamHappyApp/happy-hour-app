@@ -122,7 +122,6 @@ var initMap = function(jsonResponseUrl) {
 						+ '</div>'
 						+ '<div class="iw-content">'
 						+ '<div class="iw-subTitle"></div>'
-						+ '<img src="images/TheLittleBar.jpg" alt="TheLittleBar.jpg" height="115" width="83">'
 						+ '<p>'
 						+ establishment.address
 						+ '</p>'
