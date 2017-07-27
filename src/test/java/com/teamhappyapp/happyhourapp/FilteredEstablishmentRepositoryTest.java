@@ -1,52 +1,73 @@
 package com.teamhappyapp.happyhourapp;
 
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.annotation.Resource;
-
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
-
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 public class FilteredEstablishmentRepositoryTest {
 
-	@Resource
-	private FilteredEstablishmentRepository filteredEstabRepo;
+	@InjectMocks
+	private FilteredEstablishmentRepository underTest;
 
-	@Resource
-	private EstablishmentRepository establishmentRepo;
-
-	@Resource
+	@Mock
 	private FilterRepository filterRepo;
 
-	private Establishment createAndSaveTestEstablishment(String name, Schedule testSchedule, Filter... filters) {
-		return establishmentRepo.save(createTestEstablishment(name, testSchedule, filters));
+	@Mock
+	private Filter patioFilter;
+
+	@Mock
+	private Filter karaokeFilter;
+	
+	@Mock
+	private Filter kidsWelcomeFilter; // who wants kids at a happy hour?
+
+	private Establishment patioAndKaraokeEst;
+	private Establishment karaokeOnlyEst;
+	private Establishment patioOnlyEst;
+
+	@Before
+	public void setup() {
+		MockitoAnnotations.initMocks(this);
+
+		patioAndKaraokeEst = createTestEstablishment("Bar with patio and karaoke", patioFilter, karaokeFilter);
+		karaokeOnlyEst = createTestEstablishment("Bar with karaoke only", karaokeFilter);
+		patioOnlyEst = createTestEstablishment("Bar with patio only", patioFilter);
+		
+		when(patioFilter.getEstablishments()).thenReturn(asSet(patioAndKaraokeEst, patioOnlyEst));
+		when(karaokeFilter.getEstablishments()).thenReturn(asSet(patioAndKaraokeEst, karaokeOnlyEst));
+		when(kidsWelcomeFilter.getEstablishments()).thenReturn(Collections.emptySet());
 	}
 
-	private Establishment createTestEstablishment(String name, Schedule testSchedule, Filter... filters) {
-		return new Establishment(name, "address", "lat", "long", "phone", testSchedule, filters);
+	private Establishment createTestEstablishment(String name, Filter... filters) {
+		return new Establishment(name, null, null, null, null, null, filters);
+	}
+	
+	private <E> Set<E> asSet(E... elements) {
+		return new HashSet<>(Arrays.asList(elements));
 	}
 
 	@Test
-	public void shouldReturnDemoByFilter() {
-
-		// using two filters because I feel better about it that way
-		Filter patioFilter = filterRepo.save(new Filter("patio"));
-		Filter karaokeFilter = filterRepo.save(new Filter("karaoke"));
-		Schedule irrelevant = new Schedule(11, 12);
-		String[] filterName = { "patio" };
-		// you can pass zero or more arguments for varargs, don't need an array
-		Establishment patioAndKaraokeEst = createAndSaveTestEstablishment("Bar with patio and karaoke", irrelevant,
-				patioFilter, karaokeFilter);
-		createAndSaveTestEstablishment("Bar with karaoke only", irrelevant, karaokeFilter);
-
-		Collection<Establishment> results = filteredEstabRepo.findForFiltersNamed(filterName);
-
-		// assert that only the establishment with patio was returned
-		assertThat(results, contains(patioAndKaraokeEst));
+	public void shouldReturnAllEstablishmentsForASingleFilter() {
+		
+		when(filterRepo.findByNameIn("patio")).thenReturn(asSet(patioFilter));
+		
+		String[] patioFilter = {"patio"};
+		// I changed findForFiltersNamed to accept String... rather than String[] - will this work with the other stuff?
+		Collection<Establishment> results = underTest.findForFiltersNamed(patioFilter);
+		
+		assertThat(results, containsInAnyOrder(patioAndKaraokeEst, patioOnlyEst));
 	}
 }
