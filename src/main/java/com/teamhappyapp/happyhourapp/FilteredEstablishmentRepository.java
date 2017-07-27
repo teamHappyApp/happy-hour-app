@@ -29,7 +29,7 @@ public class FilteredEstablishmentRepository {
 			currentFilterEstablishments = filterItr.next().getEstablishments();
 			filtered = intersection(filtered, currentFilterEstablishments);
 		}
-		
+
 		// could do return new HashSet<>(filtered) if we wanted to return a set
 		return filtered;
 	}
