@@ -31,6 +31,18 @@ public class Establishment {
 	private String longitude;
 	
 	private String phoneNumber;
+	
+	private String image;
+	
+	private String description;
+
+	public String getImage() {
+		return image;
+	}
+
+	public String getDescription() {
+		return description;
+	}
 
 	@Embedded
 	private Schedule schedule;

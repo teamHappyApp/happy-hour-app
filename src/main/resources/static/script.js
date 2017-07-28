@@ -124,11 +124,15 @@ var initMap = function(jsonResponseUrl) {
 				}
 		
 				var stringContent = '<div id="iw-container">'
+
 						+ '<div class="iw-title">' + establishment.name
 						+ '</div>' + '<div class="iw-content">'
-						+ '<div class="iw-subTitle"></div>' + '<p>'
+						+ '<div class="iw-img">'
+						+ '<img style="width: 100%; height: 100px; margin: 0; padding:0;" src="images/TheLittleBar3.png">'
+						+ '</div>' + '<p>'
 						+ establishment.address + '</p>' + '<p>'
-						+ establishment.phoneNumber + '</p>' + '<ul class=filter-list>' + filterNames + '</ul></div> '+ '</div>' + '</div>'
+						+ establishment.phoneNumber + '</p>' + '<ul class=filter-list>' + filterNames + '</ul>'+ '</div>' + '</div>'
+
 				return stringContent;
 			}
 		}
