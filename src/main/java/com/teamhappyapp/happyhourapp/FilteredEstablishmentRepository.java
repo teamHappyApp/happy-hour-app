@@ -16,6 +16,9 @@ public class FilteredEstablishmentRepository {
 
 	@Resource
 	private FilterRepository filterRepo;
+	
+	@Resource
+	private EstablishmentRepository estabRepo;
 
 	public Collection<Establishment> findForFiltersNamed(String[] filterNames) {
 
@@ -33,4 +36,14 @@ public class FilteredEstablishmentRepository {
 		// could do return new HashSet<>(filtered) if we wanted to return a set
 		return filtered;
 	}
+	
+//	public Collection<Establishment> findForFiltersAndSchedule (String[] filterNames, int windowBegin, int windowEnd) {
+//
+//		Set<Establishment> bySchedule = estabRepo.findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(windowBegin, windowEnd);
+//		Collection<Establishment> byFilters = findForFiltersNamed(filterNames);
+//		
+//		Collection<Establishment> byScheduleAndFilters = intersection(byFilters, bySchedule);
+//		
+//		return byScheduleAndFilters;
+//	}
 }

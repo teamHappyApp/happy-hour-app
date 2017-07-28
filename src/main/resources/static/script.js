@@ -136,7 +136,8 @@ var initMap = function(jsonResponseUrl) {
 			}
 		}
 	}
-
+	
+	console.log(jsonResponseUrl);
 	xhttp.open("GET", jsonResponseUrl, true);
 	xhttp.send();
 }
@@ -150,24 +151,6 @@ $(window).scroll(function() {
 		$('.navbar').removeClass('opaque');
 	}
 });
-
-/*
- * var generateElements = function(jsonResponse) { var byScheduleDiv =
- * $('#schedule-content'); byScheduleDiv.empty(); var establishmentsList = $('<ul></ul>');
- * for (var idx = 0; idx < jsonResponse.length; idx++) {
- * establishmentsList.append('<li>' + jsonResponse[idx].name + '</li>'); }
- * byScheduleDiv.append(establishmentsList); }
- * 
- * var writeFailureToConsole = function(response, status, errorThrown) {
- * alert("Sorry, there was a problem!"); console.log("Error: " + errorThrown);
- * console.log("Status: " + status); console.log(response); };
- * 
- * var performRequest = function(scheduleUrl, successFunction) { var options = { //
- * options is an object described using JSON url : scheduleUrl, type : "GET", //
- * request method -- usually "GET" or "POST" dataType : "json" // the type of
- * response we're expecting };
- * $.ajax(options).done(successFunction).fail(writeFailureToConsole); };
- */
 
 $(document)
 		.ready(
@@ -202,12 +185,5 @@ $(document)
 									});
 				});
 
-// function() {
-// var filterName;
-// if(document.getElementById('patio').checked){
-// initMap("http://localhost:8080/establishments/byFilter/patio");
-// } else if(document.getElementById('off-street-parking').checked) {
-// initMap("http://localhost:8080/establishments/byFilter/off-street-parking");
-// }
-// });
+
 

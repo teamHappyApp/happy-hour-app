@@ -1,5 +1,6 @@
 package com.teamhappyapp.happyhourapp;
 
+import static org.apache.commons.collections4.CollectionUtils.intersection;
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ public class EstablishmentController {
 
 	@Resource
 	private FilterRepository filterRepo;
-	
+
 	@Resource
 	private FilteredEstablishmentRepository filteredEstabRepo;
 
@@ -34,11 +35,23 @@ public class EstablishmentController {
 		return establishmentsBySchedule;
 	}
 
-	
 	@RequestMapping("/establishments/byFilter/{name}")
 	public Iterable<Establishment> establishmentsByFilter(@PathVariable String[] name) {
 		Iterable<Establishment> establishmentsByFilter = filteredEstabRepo.findForFiltersNamed(name);
 		return establishmentsByFilter;
+	}
+
+	@RequestMapping("/establishments/bySchedule/{windowBegin}/{windowEnd}/byFilter/{name}")
+	public Iterable<Establishment> establishmentsByScheduleAndFilters(@PathVariable int windowBegin,
+			@PathVariable int windowEnd, @PathVariable String[] name) {
+		Iterable<Establishment> establishmentsBySchedule = establishmentRepo
+				.findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(windowBegin, windowEnd);
+		Iterable<Establishment> establishmentsByFilter = filteredEstabRepo.findForFiltersNamed(name);
+		Iterable<Establishment> establishmentsByFilterAndSchedule = intersection(establishmentsBySchedule,
+				establishmentsByFilter);
+
+		return establishmentsByFilterAndSchedule;
+
 	}
 
 }
