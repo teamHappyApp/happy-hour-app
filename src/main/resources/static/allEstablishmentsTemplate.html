@@ -25,34 +25,47 @@
 		<div class="filter-sidebar">
 			<h3>Filters</h3>
 			<div class="schedule-filter">
-				<label>Start Time: <input name="startTime" /></label> <label>End
-					Time: <input name="endTime" />
-				</label>
-				<br>
-				<button id="generateMarkersByTime" name="generateMarkersByTime">Find
-					by Schedule</button>
+				<label for="startTime">Start Time: </label>  
+				 <select
+					id="startTime" name="startTime"> 
+					<option value="4">4</option> 
+					<option value="5">5</option> 
+					<option value="6">6</option> 
+					<option value="7">7</option> 
+				</select> 
+				<label for="endTime">End Time: </label> 
+				<select id="endTime"
+					name="startTime"> 
+					<option value="6">6</option> 
+					<option value="7">7</option> 
+					<option value="8">8</option> 
+					<option value="9">9</option> 
+				</select> 
+				
+  				<button id="generateMarkersByTime" name="generateMarkersByTime">Find
+  					by Schedule</button>
+				<div class="filter">
+					<label>Patio<input type="checkbox" name="patio"
+						id="filter-name" class="filter-name"></input></label> <br> <label>Off-Street
+						Parking<input type="checkbox" name="off-street-parking"
+						id="filter-name" class="filter-name"></input>
+					</label> 
+					<button id="generateMarkersByFilter" name="generateMarkersByFilter">Find
+						by Filters</button>
+				</div>
 			</div>
-			<br>
-			<div class="filter">
-				<label>Patio<input type="checkbox" name="patio" id="filter-name" class="filter-name"></input></label>
-				<br>
-				<label>Off-Street Parking<input type="checkbox" name="off-street-parking" id="filter-name" class="filter-name"></input></label>
-				<br><br>
-				<button id="generateMarkersByFilter" name="generateMarkersByFilter">Find
-					by Filters</button>
 			</div>
+			<div id="googleMap"></div>
 		</div>
-		<div id="googleMap"></div>
-	</div>
-	
 
-	<script src="https://code.jquery.com/jquery-3.2.1.js"
-		integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-		crossorigin="anonymous"></script>
-	<script type="text/javascript" src="script.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxlN41yXZT13zNWkyEbNue7sKeI5V8ZxI&amp;callback=initMap"></script>
 
+
+		<script src="https://code.jquery.com/jquery-3.2.1.js"
+			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+			crossorigin="anonymous"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxlN41yXZT13zNWkyEbNue7sKeI5V8ZxI&amp;callback=initMap"></script>
 </body>
 
 </html>

@@ -87,7 +87,6 @@ var initMap = function(jsonResponseUrl) {
 				// see function below - infoWindowContent at that index gets set
 				// to establishment info for info window
 
-				
 				infoWindowContent[i] = setInfoWindow(establishment);
 
 				location = new google.maps.LatLng(
@@ -180,10 +179,10 @@ $(document)
 									'click',
 									function() {
 										var windowBegin = $(
-												'input[name="startTime"]')
+												'#startTime')
 												.val();
 										var windowEnd = $(
-												'input[name="endTime"]').val();
+												'#endTime').val();
 										initMap("http://localhost:8080/establishments/bySchedule/"
 												+ windowBegin + "/" + windowEnd);
 									});
