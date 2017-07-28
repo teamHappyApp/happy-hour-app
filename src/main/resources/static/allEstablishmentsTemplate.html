@@ -24,20 +24,35 @@
 	<div class="lower-page-container">
 		<div class="filter-sidebar">
 			<h3>Filters</h3>
-			<div class="schedule-filter">
-				<label>Start Time: <input name="startTime" /></label> <label>End
-					Time: <input name="endTime" />
-				</label>
-				<br>
-				<button id="generateMarkersByTime" name="generateMarkersByTime">Find
-					by Schedule</button>
-			</div>
+			<form>
+				<div class="schedule-filter">
+					<label class="startTime">Start Time: </label> 
+					<select name = "startTime">
+	               		<option value = "4" > 4 </option>
+	               		<option value = "5" > 5 </option>
+	               		<option value = "6" > 6 </option>
+	               		<option value = "7" > 7 </option>
+	             	</select>
+					
+					<label class="endTime">End Time: 
+					<select name = "endTime">
+	               		<option value = "6" > 6 </option>
+	               		<option value = "7" > 7 </option>
+	               		<option value = "8" > 8 </option>
+	               		<option value = "9" > 9 </option>
+	             	</select>
+					</label>
+					<br>
+					<button id="generateMarkersByTime" name="generateMarkersByTime">Find
+						by Schedule</button>
+				</div>
+			</form>
 			<br>
 			<div class="filter">
-				<label>Patio<input type="checkbox" name="patio" id="filter-name" class="filter-name"></input></label>
+				<input type="checkbox" name="patio" id="filter-name" class="filter-name"><label>Patio</label></input>
 				<br>
-				<label>Off-Street Parking<input type="checkbox" name="off-street-parking" id="filter-name" class="filter-name"></input></label>
-				<br><br>
+				<input type="checkbox" name="off-street-parking" id="filter-name" class="filter-name"><label>Off-Street Parking</label></input>
+				<br>
 				<button id="generateMarkersByFilter" name="generateMarkersByFilter">Find
 					by Filters</button>
 			</div>
