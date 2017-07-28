@@ -126,6 +126,22 @@ body {
 	*/
 }
 
+.filter-list {
+	list-style: none;
+}
+
+.filter-list li {
+	border: solid black 1px;
+    display: inline-block;
+	border-radius: 2px;
+	padding: 2px;
+	margin: 2px;
+	background-color: green;
+	color: white;
+	font-size: 10px;
+	
+}
+
 /*
 .gm-style .iw-container .iw-img {
 	width: 100%;

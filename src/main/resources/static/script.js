@@ -86,6 +86,8 @@ var initMap = function(jsonResponseUrl) {
 				establishment = allEstablishments[i];
 				// see function below - infoWindowContent at that index gets set
 				// to establishment info for info window
+
+				
 				infoWindowContent[i] = setInfoWindow(establishment);
 
 				location = new google.maps.LatLng(
@@ -107,55 +109,31 @@ var initMap = function(jsonResponseUrl) {
 					}
 				})(marker, i));
 			}
-			
-			//closes infowindow when clicking on map
+
+			// closes infowindow when clicking on map
 			google.maps.event.addListener(map, 'click', function() {
-                infoWindow.close();
-            });
-			
+				infoWindow.close();
+			});
+
 			// function to return all content for the infoWindow - establishment
 			// is set to the relevant index in the above for loop
 			function setInfoWindow(establishment) {
+				var filterNames = "";
+				for (var j = 0; j < establishment.filters.length; j++) {
+					filterNames += '<li>' + establishment.filters[j].name + '</li>';
+				}
+		
 				var stringContent = '<div id="iw-container">'
-						+ '<div class="iw-title">'
-						+ establishment.name
-						+ '</div>'
+
+						+ '<div class="iw-title">' + establishment.name
+						+ '</div>' + '<div class="iw-content">'
 						+ '<div class="iw-img">'
 						+ '<img style="width: 100%; height: 100px; margin: 0; padding:0;" src="images/TheLittleBar3.png">'
-						+ '</div>'
-						+ '<div class="iw-content">'
-						+ '<p>'
-						+ establishment.address
-						+ '</p>'
-						+ '<p>'
-						+ establishment.phoneNumber
-						+ '</p>'
-						+ '<p>'
-						+ establishment.schedule
-						+ '</p>'
-						+ '<p>'
-						+ (establishment.filters.length > 0 ? establishment.filters[0].name
-								: 'none')
-						+ '</p>'
-						+ '</div>'
-						+  '</div>'
+						+ '</div>' + '<p>'
+						+ establishment.address + '</p>' + '<p>'
+						+ establishment.phoneNumber + '</p>' + '<ul class=filter-list>' + filterNames + '</ul>'+ '</div>' + '</div>'
+
 				return stringContent;
-				
-				
-				
-//				var iwCloseBtn = iwOuter.next();
-//				
-//				iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});
-//			
-//				 if($('.iw-content').height() < 140){
-//				      $('.iw-bottom-gradient').css({display: 'none'});
-//				    }
-//				 
-//				 iwCloseBtn.mouseout(function(){
-//				      $(this).css({opacity: '1'});
-//				    });
-				
-				
 			}
 		}
 	}
