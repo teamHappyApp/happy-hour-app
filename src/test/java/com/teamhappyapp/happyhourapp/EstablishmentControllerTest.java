@@ -1,5 +1,6 @@
 package com.teamhappyapp.happyhourapp;
 
+
 import static java.util.Collections.singleton;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
@@ -69,6 +70,19 @@ public class EstablishmentControllerTest {
 		when(filteredEstabRepo.findForFiltersNamed(filterName)).thenReturn(singleton(establishment));
 		
 		mvc.perform(get("/establishments/byFilter/patio")).andExpect(status().isOk())
+		.andExpect(jsonPath("$[0].name", is("test establishment")));
+	}
+	
+	@Test
+	public void shouldRenderEstablishmentByScheduleAndPatioFilter() throws Exception {
+		Schedule fourToSix = new Schedule(4, 6);
+		Filter patio = new Filter("patio");
+		String[] filterName = {"patio"};
+		Establishment establishment = new Establishment("test establishment", "foo", "bar", "baz", "867-5309", fourToSix, patio);
+		when(establishmentRepo.findByScheduleStartTimeLessThanEqualAndScheduleEndTimeGreaterThanEqual(4, 6)).thenReturn(singleton(establishment));
+		when(filteredEstabRepo.findForFiltersNamed(filterName)).thenReturn(singleton(establishment));
+		
+		mvc.perform(get("/establishments/bySchedule/4/6/byFilter/patio")).andExpect(status().isOk())
 		.andExpect(jsonPath("$[0].name", is("test establishment")));
 	}
 }
