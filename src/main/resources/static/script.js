@@ -98,10 +98,11 @@ var initMap = function(jsonResponseUrl) {
 					map : map
 				});
 
+				var infoWindow;
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, i) {
 					return function() {
-						var infoWindow = new google.maps.InfoWindow({
+						infoWindow = new google.maps.InfoWindow({
 							content : infoWindowContent[i]
 						});
 						infoWindow.open(map, this);
