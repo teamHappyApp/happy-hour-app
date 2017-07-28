@@ -25,9 +25,23 @@
 		<div class="filter-sidebar">
 			<h3>Filters</h3>
 			<div class="schedule-filter">
-				<label>Start Time: <input name="startTime" /></label> <label>End
-					Time: <input name="endTime" />
-				</label>
+				
+				<label for="startTime">Start Time: </label>
+				<select id="startTime" name="startTime">
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+				</select>
+
+				<label for="endTime">End Time: </label>
+				<select id="endTime" name="startTime">
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</select>
+
 				<br>
 				<button id="generateMarkersByTime" name="generateMarkersByTime">Find
 					by Schedule</button>
