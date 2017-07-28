@@ -28,22 +28,23 @@
 				<label for="startTime">Start Time: </label>  
 				 <select
 					id="startTime" name="startTime"> 
-					<option value="4">4</option> 
-					<option value="5">5</option> 
-					<option value="6">6</option> 
-					<option value="7">7</option> 
+					<option value="0">-----</option>
+					<option value="4">4:00 PM</option> 
+					<option value="5">5:00 PM</option> 
+					<option value="6">6:00 PM</option> 
+					<option value="7">7:00 PM</option> 
 				</select> 
 				<label for="endTime">End Time: </label> 
 				<select id="endTime"
 					name="startTime"> 
-					<option value="6">6</option> 
-					<option value="7">7</option> 
-					<option value="8">8</option> 
-					<option value="9">9</option> 
+					<option value="0">-----</option>
+					<option value="6">6:00 PM</option> 
+					<option value="7">7:00 PM</option> 
+					<option value="8">8:00 PM</option> 
+					<option value="9">9:00 PM</option> 
 				</select> 
 				
-  				<button id="generateMarkersByTime" name="generateMarkersByTime">Find
-  					by Schedule</button>
+
 				<div class="filter">
 					<label>Patio<input type="checkbox" name="patio"
 						id="filter-name" class="filter-name"></input></label> <br> <label>Off-Street
@@ -52,6 +53,7 @@
 					</label> 
 					<button id="generateMarkersByFilter" name="generateMarkersByFilter">Find
 						by Filters</button>
+						<button id="resetMarkers" name="resetMarkers">Reset</button>
 				</div>
 			</div>
 			</div>

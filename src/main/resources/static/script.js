@@ -119,24 +119,28 @@ var initMap = function(jsonResponseUrl) {
 			function setInfoWindow(establishment) {
 				var filterNames = "";
 				for (var j = 0; j < establishment.filters.length; j++) {
-					filterNames += '<li>' + establishment.filters[j].name + '</li>';
+					filterNames += '<li>' + establishment.filters[j].name
+							+ '</li>';
 				}
-		
+
 				var stringContent = '<div id="iw-container">'
 
-						+ '<div class="iw-title">' + establishment.name
-						+ '</div>' + '<div class="iw-content">'
+						+ '<div class="iw-title">'
+						+ establishment.name
+						+ '</div>'
+						+ '<div class="iw-content">'
 						+ '<div class="iw-img">'
 						+ '<img style="width: 100%; height: 100px; margin: 0; padding:0;" src="images/TheLittleBar3.png">'
-						+ '</div>' + '<p>'
-						+ establishment.address + '</p>' + '<p>'
-						+ establishment.phoneNumber + '</p>' + '<ul class=filter-list>' + filterNames + '</ul>'+ '</div>' + '</div>'
+						+ '</div>' + '<p>' + establishment.address + '</p>'
+						+ '<p>' + establishment.phoneNumber + '</p>'
+						+ '<ul class=filter-list>' + filterNames + '</ul>'
+						+ '</div>' + '</div>'
 
 				return stringContent;
 			}
 		}
 	}
-	
+
 	console.log(jsonResponseUrl);
 	xhttp.open("GET", jsonResponseUrl, true);
 	xhttp.send();
@@ -157,33 +161,38 @@ $(document)
 				function() {
 					initMap("http://localhost:8080/establishments");
 
-					$('button[name="generateMarkersByTime"]')
-							.on(
-									'click',
-									function() {
-										var windowBegin = $(
-												'#startTime')
-												.val();
-										var windowEnd = $(
-												'#endTime').val();
-										initMap("http://localhost:8080/establishments/bySchedule/"
-												+ windowBegin + "/" + windowEnd);
-									});
-
 					$('button[name="generateMarkersByFilter"]')
 							.on(
 									'click',
 									function() {
+										var windowBegin = $('#startTime').val();
+										var windowEnd = $('#endTime').val();
 										var selectedFilters = [];
 										$(".filter-name:checked").each(
 												function() {
 													selectedFilters
 															.push(this.name);
 												});
-										initMap("http://localhost:8080/establishments/byFilter/"
-												+ selectedFilters);
+
+										if (windowBegin == 0 || windowEnd == 0) {
+											initMap("http://localhost:8080/establishments/byFilter/"
+													+ selectedFilters);
+										} else if (selectedFilters.length == 0) {
+											initMap("http://localhost:8080/establishments/bySchedule/"
+													+ windowBegin
+													+ "/"
+													+ windowEnd);
+										} else {
+											initMap("http://localhost:8080/establishments/bySchedule/"
+													+ windowBegin
+													+ "/"
+													+ windowEnd
+													+ "/byFilter/"
+													+ selectedFilters);
+										}
 									});
+
+					$('button[name="resetFilters"]').on('click', function() {
+						initMap("http://localhost:8080/establishments");
+					});
 				});
-
-
-
