@@ -149,7 +149,7 @@ var initMap = function(jsonResponseUrl) {
 			function setInfoWindow(establishment) {
 				var filterNames = "";
 				for (var j = 0; j < establishment.filters.length; j++) {
-					filterNames += '<li>' + establishment.filters[j].name
+					filterNames += '<li class="filter-stuff">' + establishment.filters[j].name
 							+ '</li>';
 				}
 
@@ -166,8 +166,7 @@ var initMap = function(jsonResponseUrl) {
 
 						 + '<p> Happy Hour from ' 
 	                        + establishment.schedule.startTime + ':00 PM to '
-	                        + establishment.schedule.endTime + ':00 PM' + '</p>' 
-	                        + '<div class="filter-container">'
+	                        + establishment.schedule.endTime + ':00 PM' + '</p>'
 						+ '<ul class= "filter-list">' + filterNames + '</ul>'
 						+ '</div>'
 						+ '</div>'
