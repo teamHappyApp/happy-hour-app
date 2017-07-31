@@ -164,7 +164,7 @@ var initMap = function(jsonResponseUrl) {
 						+ '</div>' + '<p>' + establishment.address + '</p>'
 						+ '<p>' + establishment.phoneNumber + '</p>'
 
-						 + '<p> Happy Hour from ' 
+						 + '<p> Happy Hour: ' 
 	                        + establishment.schedule.startTime + ':00 PM to '
 	                        + establishment.schedule.endTime + ':00 PM' + '</p>'
 						+ '<ul class= "filter-list">' + filterNames + '</ul>'
