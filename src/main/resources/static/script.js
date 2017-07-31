@@ -103,8 +103,6 @@ var initMap = function(jsonResponseUrl) {
 				var iwOuter;
 				var iwCloseBtn;
 
-
-
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, i) {
 					return function() {
@@ -118,25 +116,26 @@ var initMap = function(jsonResponseUrl) {
 
 			// code to move x button out of info window
 
-//			google.maps.event.addListener(infoWindow, 'domready', function() {
-//				iwOuter = $('.gm-style-iw');
-//
-//				iwCloseBtn = iwOuter.next();
-//
-//				// Apply the desired effect to the close button
-//				iwCloseBtn.css({
-//					opacity : '1',
-//					right : '38px',
-//					top : '3px',
-//					border : '7px solid #48b5e9',
-//					'border-radius' : '13px',
-//					'box-shadow' : '0 0 5px #3990B9'
-//				});
-//				
-//				iwCloseBtn.mouseout(function(){
-//					$(this).css({opacity: '1'});
-//				});
-//			});
+			// google.maps.event.addListener(infoWindow, 'domready', function()
+			// {
+			// iwOuter = $('.gm-style-iw');
+			//
+			// iwCloseBtn = iwOuter.next();
+			//
+			// // Apply the desired effect to the close button
+			// iwCloseBtn.css({
+			// opacity : '1',
+			// right : '38px',
+			// top : '3px',
+			// border : '7px solid #48b5e9',
+			// 'border-radius' : '13px',
+			// 'box-shadow' : '0 0 5px #3990B9'
+			// });
+			//				
+			// iwCloseBtn.mouseout(function(){
+			// $(this).css({opacity: '1'});
+			// });
+			// });
 
 			// closes infowindow when clicking on map
 			google.maps.event.addListener(map, 'click', function() {
@@ -149,9 +148,38 @@ var initMap = function(jsonResponseUrl) {
 			function setInfoWindow(establishment) {
 				var filterNames = "";
 				for (var j = 0; j < establishment.filters.length; j++) {
-					filterNames += '<li class="filter-stuff">' + establishment.filters[j].name
-							+ '</li>';
+					filterNames += '<li class="filter-stuff">'
+							+ establishment.filters[j].name + '</li>';
 				}
+
+				var formattedTime = "";
+				var rawStartTime = establishment.schedule.startTime;
+				var rawEndTime = establishment.schedule.endTime;
+				var startTime;
+				var endTime;
+
+				if (rawStartTime > 12) {
+					startTime = rawStartTime - 12 + ":00 PM";
+				} else if (rawStartTime == 12) {
+					startTime = "12:00 PM";
+				} else if (rawStartTime == 0) {
+					startTime = "12:00 AM";
+				} else {
+					startTime = rawStartTime + ":00 AM";
+				}
+
+				if (rawEndTime > 12) {
+					endTime = rawEndTime - 12 + ":00 PM";
+				} else if (rawEndTime == 12) {
+					endTime = "12:00 PM";
+				} else if (rawEndTime == 0) {
+					endTime = "12:00 AM";
+				} else {
+					endTime = rawEndTime + ":00 AM";
+				}
+
+				formattedTime = "Happy hour from: " + startTime + " - "
+						+ endTime;
 
 				var stringContent = '<div id="iw-container">'
 
@@ -162,16 +190,10 @@ var initMap = function(jsonResponseUrl) {
 						+ '<div class="iw-img">'
 						+ '<img style="width: 100%; height: 100px; margin: 0; padding:0;" src="images/TheLittleBar3.png">'
 						+ '</div>' + '<p>' + establishment.address + '</p>'
-						+ '<p>' + establishment.phoneNumber + '</p>'
-
-						 + '<p> Happy Hour from ' 
-	                        + establishment.schedule.startTime + ':00 PM to '
-	                        + establishment.schedule.endTime + ':00 PM' + '</p>'
-						+ '<ul class= "filter-list">' + filterNames + '</ul>'
+						+ '<p>' + establishment.phoneNumber + '</p>' + '<p>'
+						+ formattedTime + '</p>' + '<ul class= "filter-list">'
+						+ filterNames + '</ul>' + '</div>' + '</div>'
 						+ '</div>'
-						+ '</div>'
-						+ '</div>'
-
 
 				return stringContent;
 			}
