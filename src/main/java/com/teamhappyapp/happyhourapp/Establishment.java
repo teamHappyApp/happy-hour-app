@@ -8,6 +8,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -34,15 +35,15 @@ public class Establishment {
 	
 	private String image;
 	
+	@Lob
 	private String description;
 
-	public String getImage() {
-		return image;
-	}
-
-	public String getDescription() {
-		return description;
-	}
+	private String url;
+	
+	private String facebook;
+	
+	private String yelp;
+	
 
 	@Embedded
 	private Schedule schedule;
@@ -82,7 +83,26 @@ public class Establishment {
 		return schedule;
 	}
 	
+	public String getImage() {
+		return image;
+	}
 	
+	public String getDescription() {
+		return description;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public String getFacebook() {
+		return facebook;
+	}
+
+	public String getYelp() {
+		return yelp;
+	}
+
 	public Establishment(String name, String address, String latitude, String longitude, String phoneNumber, Schedule schedule) {
 		this.name = name;
 		this.address = address;
