@@ -182,7 +182,6 @@ var initMap = function(jsonResponseUrl) {
 						+ endTime;
 
 				var stringContent = '<div id="iw-container">'
-
 						+ '<div class="iw-title">'
 						+ establishment.name
 						+ '</div>'
