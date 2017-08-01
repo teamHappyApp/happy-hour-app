@@ -33,12 +33,12 @@ body {
 	width: 300px;
 }
 
-.filters {
-	display: flex;
-	justify-content: center;
+.filter {
+	margin-top: 10px;
+	margin-left: 50px;
 }
 
-.noise-amb-container{
+.noise-amb-container {
 	display: flex;
 	justify-content: space-between;
 }
@@ -47,8 +47,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	margin-right: 20px;
-	
+	margin-left: 21px;
+	margin-right: 10px;
 }
 
 .ambiance {
@@ -65,13 +65,18 @@ body {
 	justify-content: space-around;
 }
 
+.filter-name {
+	background: green;
+	margin-bottom: 7px;
+}
+
 #googleMap {
 	margin-left: 20px;
 	width: 800px;
 	height: 700px;
 }
 
-.style-select {
+.time-dropdown {
 	background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
 	height: 29px;
 	overflow: hidden;
@@ -88,7 +93,7 @@ body {
 	background-color: lightgrey;
 }
 
-.style-select select {
+.time-dropdown select {
 	background: transparent;
 	border: none;
 	font-size: 14px;
@@ -112,16 +117,6 @@ body {
 	transition: background-color .5s ease 0s;
 }
 
-/* @media (max-width: 992px) {
-  body
-  {
-    background:none;
-  }
-  .navbar {
-    background-color: black;
-    height: 60px;
-    transition: background-color .5s ease 0s;
-}*/
 .navbar ul {
 	display: inline-flex;
 	justify-content: space-between;
@@ -176,7 +171,7 @@ body {
 	text-decoration: underline;
 }
 
-.filter-stuff {
+.filter-tags {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -201,28 +196,18 @@ footer {
 	justify-content: center;
 }
 
-#resetMarkers {
-	margin: 5px;
+.button-container {
+	display: flex;
+	flex-direction: column;
+	margin-top: 15px;
 }
 
-/*#iw-close-btn {
-	opacity: 1;
-	right: 38px;
-	top: 3px;
-	border: 7px solid #48b5e9;
-	border-radius: 13px;
-	box-shadow: 0 0 5px #3990B9;
-} */
+.button-container button {
+	border-radius: 5px;
+	border: solid 1px black;
+	font-family: 'Pathway Gothic One', sans-serif;
+	font-size: medium;
+	margin: 5px;
+	padding: 5px;
+}
 
-/*
-.iw-bottom-gradient {
-	position: absolute;
-	width: 326px;
-	height: 25px;
-	bottom: 10px;
-	right: 18px;
-	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-} */

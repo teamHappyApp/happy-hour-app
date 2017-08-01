@@ -124,7 +124,7 @@ var initMap = function(jsonResponseUrl) {
 			function setInfoWindow(establishment) {
 				var filterNames = "";
 				for (var j = 0; j < establishment.filters.length; j++) {
-					filterNames += '<li class="filter-stuff">'
+					filterNames += '<li class="filter-tags">'
 							+ establishment.filters[j].displayName + '</li>';
 				}
 
