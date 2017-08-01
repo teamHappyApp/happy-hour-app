@@ -17,6 +17,8 @@ public class Filter {
 	private Long id;
 
 	private String name;
+	
+	private String displayName;
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "filters")
@@ -28,6 +30,10 @@ public class Filter {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getDisplayName() {
+		return displayName;
 	}
 
 	public Set<Establishment> getEstablishments() {
