@@ -125,7 +125,7 @@ var initMap = function(jsonResponseUrl) {
 				var filterNames = "";
 				for (var j = 0; j < establishment.filters.length; j++) {
 					filterNames += '<li class="filter-stuff">'
-							+ establishment.filters[j].name + '</li>';
+							+ establishment.filters[j].displayName + '</li>';
 				}
 
 				var formattedTime = "";
