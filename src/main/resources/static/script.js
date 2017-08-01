@@ -1,7 +1,7 @@
 var initMap = function(jsonResponseUrl) {
 	var map = new google.maps.Map(document.getElementById('googleMap'), {
-		zoom : 10,
-		center : new google.maps.LatLng(39.9612, -82.9988),
+		zoom : 11,
+		center : new google.maps.LatLng(40.0010, -82.9900),
 		mapTypeId : google.maps.MapTypeId.ROADMAP,
 		styles : [ {
 			"featureType" : "administrative",
@@ -114,30 +114,6 @@ var initMap = function(jsonResponseUrl) {
 				})(marker, i));
 			}
 
-			// code to move x button out of info window
-
-			// google.maps.event.addListener(infoWindow, 'domready', function()
-			// {
-			// iwOuter = $('.gm-style-iw');
-			//
-			// iwCloseBtn = iwOuter.next();
-			//
-			// // Apply the desired effect to the close button
-			// iwCloseBtn.css({
-			// opacity : '1',
-			// right : '38px',
-			// top : '3px',
-			// border : '7px solid #48b5e9',
-			// 'border-radius' : '13px',
-			// 'box-shadow' : '0 0 5px #3990B9'
-			// });
-			//				
-			// iwCloseBtn.mouseout(function(){
-			// $(this).css({opacity: '1'});
-			// });
-			// });
-
-			// closes infowindow when clicking on map
 			google.maps.event.addListener(map, 'click', function() {
 				infoWindow.close();
 
@@ -148,8 +124,8 @@ var initMap = function(jsonResponseUrl) {
 			function setInfoWindow(establishment) {
 				var filterNames = "";
 				for (var j = 0; j < establishment.filters.length; j++) {
-					filterNames += '<li class="filter-stuff">'
-							+ establishment.filters[j].name + '</li>';
+					filterNames += '<li class="filter-tags">'
+							+ establishment.filters[j].displayName + '</li>';
 				}
 
 				var formattedTime = "";
@@ -188,11 +164,23 @@ var initMap = function(jsonResponseUrl) {
 						+ '<div class="iw-content">'
 						+ '<div class="iw-img">'
 						+ '<img style="width: 100%; height: 100px; margin: 0; padding:0;" src="images/TheLittleBar3.png">'
-						+ '</div>' + '<p>' + establishment.address + '</p>'
-						+ '<p>' + establishment.phoneNumber + '</p>' + '<p>'
-						+ formattedTime + '</p>' + '<ul class= "filter-list">'
-						+ filterNames + '</ul>' + '</div>' + '</div>'
 						+ '</div>'
+						+ '<p>'
+						+ establishment.address
+						+ '</p>'
+						+ '<p>'
+						+ establishment.phoneNumber
+						+ '</p>'
+						+ '<p>'
+						+ formattedTime
+						+ '</p>'
+						+ '<p>'
+						+ establishment.description
+						+ '</p>'
+						+ '<ul class= "filter-list">'
+						+ filterNames
+						+ '</ul>'
+						+ '</div>' + '</div>' + '</div>'
 
 				return stringContent;
 			}
@@ -250,7 +238,10 @@ $(document)
 										}
 									});
 
-					$('button[name="resetFilters"]').on('click', function() {
+					$('button[name="resetMarkers"]').on('click', function() {
+						$('#startTime').val('0');
+						$('#endTime').val('0');
+						$("input[type='checkbox']").prop("checked", false);
 						initMap("http://localhost:8080/establishments");
-					});
+								});
 				});

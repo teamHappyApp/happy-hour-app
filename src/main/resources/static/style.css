@@ -58,19 +58,16 @@ body {
 	background-color: black;
 	color: white;
 	padding-left: 20px;
-	height: 500px;
+	height: 700px;
 	width: 300px;
-	overflow-x: hidden;
-	overflow-y: scroll;
 }
 
 .filter {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	margin-top: 10px;
+	margin-left: 50px;
 }
 
-.filter-container{
+.noise-amb-container {
 	display: flex;
 	justify-content: space-between;
 }
@@ -78,8 +75,9 @@ body {
 .noise-level {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	margin-right: 25px;
+	align-items: flex-start;
+	margin-left: 21px;
+	margin-right: 10px;
 }
 
 .ambiance {
@@ -96,13 +94,19 @@ body {
 	justify-content: space-around;
 }
 
-#googleMap {
-	margin-left: 20px;
-	width: 600px;
-	height: 500px;
+.filter-name {
+	background: green;
+	margin-bottom: 7px;
 }
 
-.style-select {
+#googleMap {
+/* 	z-index: -2; */
+	margin-left: 20px;
+	width: 800px;
+	height: 700px;
+}
+
+.time-dropdown {
 	background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
 	height: 29px;
 	overflow: hidden;
@@ -119,7 +123,7 @@ body {
 	background-color: lightgrey;
 }
 
-.style-select select {
+.time-dropdown select {
 	background: transparent;
 	border: none;
 	font-size: 14px;
@@ -127,6 +131,35 @@ body {
 	padding: 5px;
 	/* If you add too much padding here, the options won't show in IE */
 	width: 268px;
+}
+
+.navbar {
+	padding: 30px;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: background-color .5s ease 0s;
+	position: fixed;
+	top: 0;
+	width: 100%;
+  z-index: 1000;
+}
+
+.navbar.opaque {
+	background-color: rgba(0, 0, 0, 1.0);
+	transition: background-color .5s ease 0s;
+}
+
+.navbar ul {
+	display: inline-flex;
+	justify-content: space-between;
+	list-style: none;
+	position: absolute;
+	right: 150px;
+}
+
+.navbar ul li a {
+	text-decoration: none;
+	padding: 5px;
+	color: white;
 }
 
 .gm-style .gm-style-iw {
@@ -170,12 +203,19 @@ body {
 	padding-bottom: 5px;
 }
 
-.filter-stuff {
+.filter-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-right: 15px;
+}
+
+.filter-tags {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	margin-top: 5px;
-	margin-right: 5px;
+	margin-right: 7px;
 	background-color: grey;
 	color: white;
 	padding: 3px;
@@ -184,19 +224,15 @@ body {
 	box-shadow: 5px 2.5px 2.5px #888888;
 }
 
-.filter-list {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-}
-
 footer {
 	display: flex;
 	justify-content: center;
 }
 
-#resetMarkers {
-	margin: 5px;
+.button-container {
+	display: flex;
+	flex-direction: column;
+	margin-top: 15px;
 }
 	
 /*background part of box*/
@@ -248,5 +284,11 @@ footer {
 	justify-content: space-between;
 }
 
-
-
+.button-container button {
+	border-radius: 5px;
+	border: solid 1px black;
+	font-family: 'Pathway Gothic One', sans-serif;
+	font-size: medium;
+	margin: 5px;
+	padding: 5px;
+}
