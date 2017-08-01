@@ -43,7 +43,7 @@
 						</select>
 					</div>
 	
-				<br> <label for="endTime">End Time: </label>
+				<label for="endTime">End Time: </label>
 				<div class="time-dropdown color semi-square">
 					<select id="endTime" name="startTime">
 						<option value="0">-----</option>
@@ -55,47 +55,120 @@
 
 					</select>
 				</div>
-				<div class="checkbox-filters">
-					<div class="filter">
-						<label><input type="checkbox" name="patio"
-							id="filter-name" class="filter-name"></input>Patio</label> <br> <label><input
-							type="checkbox" name="off-street-parking" id="filter-name"
-							class="filter-name"></input>Off-Street Parking </label> <br> <label><input
-							type="checkbox" name="bike-parking" id="filter-name"
-							class="filter-name"></input>Bike Parking </label> <br> <label><input
-							type="checkbox" name="good-kids" id="filter-name"
-							class="filter-name"></input>Kid Friendly </label> <br> <label><input
-							type="checkbox" name="good-groups" id="filter-name"
-							class="filter-name"></input>Large Group</label> <br> <label><input
-							type="checkbox" name="wi-fi" id="filter-name" class="filter-name"></input>Wifi</label>
-						<br> <label><input type="checkbox" name="tv"
-							id="filter-name" class="filter-name"></input>TV</label> <br> <label><input
-							type="checkbox" name="pool-table" id="filter-name"
-							class="filter-name"></input>Pool Table </label> <br> <br>
+
+				
+				<div class="filter">
+				
+						<div class="green filter-box">
+						<input type="checkbox" name="patio" id="filter-box1" class="filter-name"></input>
+						<label class="inner" for="filter-box1"></label>
+						<label class="outer" for="filter-box1">Patio</label> <br> 
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="off-street-parking" id="filter-box2" class="filter-name"></input>
+						<label class="inner" for="filter-box2"></label>
+						<label class="outer" for="filter-box2">Off&nbsp;Street&nbsp;Parking</label> <br> 
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="bike-parking" id="filter-box3" class="filter-name"></input>
+						<label class="inner" for="filter-box3"></label>
+						<label class="outer" for="filter-box3">Bike&nbsp;Parking</label> <br> 
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="good-kids" id="filter-box4" class="filter-name"></input>
+						<label class="inner" for="filter-box4"></label>
+						<label class="outer" for="filter-box4">Kid&nbsp;Friendly</label> <br> 
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="good-groups" id="filter-box5" class="filter-name"></input>
+						<label class="inner" for="filter-box5"></label>
+						<label class="outer" for="filter-box5">Large&nbsp;Group</label> <br> 
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="wi-fi" id="filter-box6" class="filter-name"></input>
+						<label class="inner" for="filter-box6"></label>
+						<label class="outer" for="filter-box6">Wifi</label> <br> 
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="tv" id="filter-box7" class="filter-name"></input>
+						<label class="inner" for="filter-box7"></label>
+						<label class="outer" for="filter-box7">TV</label> <br> 
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="pool-table" id="filter-box8" class="filter-name"></input>
+						<label class="inner" for="filter-box8"></label>
+						<label class="outer" for="filter-box8">Pool&nbsp;Table</label> <br> <br>
+						</div>
+						
+				</div>
+				
+				<div class="filter-container">
+					<div class="noise-level">
+					
+						<label class="indent">Noise Level:</label>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="noise-very-loud" id="filter-box9" class="filter-name"></input>
+						<label class="inner" for="filter-box9"></label>
+						<label class="outer" for="filter-box9">Very&nbsp;Loud</label>
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="noise-loud" id="filter-box10" class="filter-name"></input>
+						<label class="inner" for="filter-box10"></label>
+						<label class="outer" for="filter-box10">Loud</label>
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="noise-average" id="filter-box11" class="filter-name"></input>
+						<label class="inner" for="filter-box11"></label>
+						<label class="outer" for="filter-box11">Average</label>
+						</div>
+						
 					</div>
-					<div class="noise-amb-container">
-						<div class="noise-level">
-							<label class="indent">Noise Level:</label><label><input
-								type="checkbox" name="noise-very-loud" id="filter-name"
-								class="filter-name"></input>Very Loud </label><label><input
-								type="checkbox" name="noise-loud" id="filter-name"
-								class="filter-name"></input>Loud</label><label><input
-								type="checkbox" name="noise-average" id="filter-name"
-								class="filter-name"></input>Average</label>
+					
+					<div class="ambiance">
+					
+						<label class="indent">Ambiance:</label> 
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="amb-casual" id="filter-box12" class="filter-name"></input>
+						<label class="inner" for="filter-box12"></label>
+						<label class="outer" for="filter-box12">Casual</label>
 						</div>
-						<div class="ambiance">
-							<label class="indent">Ambiance:</label> <label><input
-								type="checkbox" name="amb-casual" id="filter-name"
-								class="filter-name"></input>Casual</label> <label><input
-								type="checkbox" name="amb-trendy" id="filter-name"
-								class="filter-name"></input>Trendy</label> <label><input
-								type="checkbox" name="amb-sports" id="filter-name"
-								class="filter-name"></input>Sports</label> <label><input
-								type="checkbox" name="amb-dive" id="filter-name"
-								class="filter-name"></input>Dive</label> <label><input
-								type="checkbox" name="amb-pub" id="filter-name"
-								class="filter-name"></input>Pub</label>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="amb-trendy" id="filter-box13" class="filter-name"></input>
+						<label class="inner" for="filter-box13"></label>
+						<label class="outer" for="filter-box13">Trendy</label>
 						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="amb-sports" id="filter-box14" class="filter-name"></input>
+						<label class="inner" for="filter-box14"></label>
+						<label class="outer" for="filter-box14">Sports</label>
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="amb-dive" id="filter-box15" class="filter-name"></input>
+						<label class="inner" for="filter-box15"></label>
+						<label class="outer" for="filter-box15">Dive</label>
+						</div>
+						
+						<div class="green filter-box">
+						<input type="checkbox" name="amb-pub" id="filter-box16" class="filter-name"></input>
+						<label class="inner" for="filter-box16"></label>
+						<label class="outer" for="filter-box16">Pub</label>
+						</div>
+						
+
 					</div>
 				</div>
 

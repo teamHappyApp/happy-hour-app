@@ -19,6 +19,35 @@ body {
 	height: auto;
 }
 
+.navbar {
+	padding: 30px;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: background-color .5s ease 0s;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+.navbar.opaque {
+	background-color: rgba(0, 0, 0, 1.0);
+	transition: background-color .5s ease 0s;
+}
+
+.navbar ul {
+	display: inline-flex;
+	justify-content: space-between;
+	list-style: none;
+	position: absolute;
+	right: 150px;
+}
+
+.navbar ul li a {
+	text-decoration: none;
+	padding: 5px;
+	color: white;
+}
+
 .lower-page-container {
 	display: flex;
 	justify-content: center;
@@ -54,7 +83,7 @@ body {
 .ambiance {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
 	margin-right: 20px;
 }
 
@@ -111,6 +140,7 @@ body {
 	position: fixed;
 	top: 0;
 	width: 100%;
+  z-index: 1000;
 }
 
 .navbar.opaque {
@@ -170,6 +200,7 @@ body {
 
 .indent {
 	text-decoration: underline;
+	padding-bottom: 5px;
 }
 
 .filter-list {
@@ -202,6 +233,55 @@ footer {
 	display: flex;
 	flex-direction: column;
 	margin-top: 15px;
+}
+	
+/*background part of box*/
+.filter-box {
+  width: 15px;
+  height: 15px;
+  margin: 2px 0 2px -50px;
+  background: #ddd;
+  position: relative;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+} 
+
+/*inner shape of box*/
+.filter-box label.inner {
+  display: block;
+  width: 10.75px;
+  height: 10.75px;
+  cursor: pointer;
+  position: absolute;
+  top: 2.125px;
+  left: 2.125px;
+  z-index: 1;
+  background: #eee;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .5);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .5);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .5);
+}
+
+/*space between words and boxes*/
+.filter-box label.outer {
+  margin-left: 25px;
+  word-wrap: no-wrap;
+}
+
+/*hiding old box*/
+.filter-box [type=checkbox] {
+  display: none
+}
+
+/*what happens when it's checked*/
+.green.filter-box input[type=checkbox]:checked+label.inner {
+  background: green;
+} 
+
+.green.filter-box {
+	display: flex;
+	justify-content: space-between;
 }
 
 .button-container button {
