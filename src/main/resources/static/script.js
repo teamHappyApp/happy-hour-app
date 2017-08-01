@@ -164,11 +164,23 @@ var initMap = function(jsonResponseUrl) {
 						+ '<div class="iw-content">'
 						+ '<div class="iw-img">'
 						+ '<img style="width: 100%; height: 100px; margin: 0; padding:0;" src="images/TheLittleBar3.png">'
-						+ '</div>' + '<p>' + establishment.address + '</p>'
-						+ '<p>' + establishment.phoneNumber + '</p>' + '<p>'
-						+ formattedTime + '</p>' + '<p>' + establishment.description + '</p>' + '<ul class= "filter-list">'
-						+ filterNames + '</ul>' + '</div>' + '</div>'
 						+ '</div>'
+						+ '<p>'
+						+ establishment.address
+						+ '</p>'
+						+ '<p>'
+						+ establishment.phoneNumber
+						+ '</p>'
+						+ '<p>'
+						+ formattedTime
+						+ '</p>'
+						+ '<p>'
+						+ establishment.description
+						+ '</p>'
+						+ '<ul class= "filter-list">'
+						+ filterNames
+						+ '</ul>'
+						+ '</div>' + '</div>' + '</div>'
 
 				return stringContent;
 			}
@@ -226,7 +238,10 @@ $(document)
 										}
 									});
 
-					$('button[name="resetFilters"]').on('click', function() {
+					$('button[name="resetMarkers"]').on('click', function() {
+						$('#startTime').val('0');
+						$('#endTime').val('0');
+						$("input[type='checkbox']").prop("checked", false);
 						initMap("http://localhost:8080/establishments");
-					});
+								});
 				});
