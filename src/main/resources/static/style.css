@@ -67,9 +67,11 @@ body {
 }
 
 #googleMap {
+	z-index: -2;
 	margin-left: 20px;
 	width: 600px;
 	height: 500px;
+	
 }
 
 .style-select {
@@ -136,6 +138,7 @@ body {
 	padding: 5px;
 	color: white;
 }
+
 
 .gm-style .gm-style-iw {
 	background-color: white;
