@@ -57,6 +57,7 @@ body {
 	align-items: flex-start;
 	margin-right: 20px;
 }
+
 .schedule-filter {
 	display: flex;
 	flex-direction: column;
