@@ -9,8 +9,7 @@ body {
 	position: absolute;
 	left: 0 px;
 	top: 0 px;
-	height: 600px;
-	
+	height: 500px;
 	z-index: -1;
 
 }
@@ -28,7 +27,7 @@ body {
 
 .navbar {
 	padding: 30px;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(89, 26, 30, 0.5);
 	transition: background-color .5s ease 0s;
 	width: 100%;
 	position: absolute;
@@ -56,16 +55,20 @@ body {
 .lower-page-container {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	margin-top: 75px;
+	margin-top: 113px;
+	margin-left: 200px;
 }
 
 .filter-sidebar {
 	background-color: black;
 	color: white;
-	padding-left: 20px;
-	height: 700px;
-	width: 300px;
+	padding-left: 60px;
+	height: 500px;
+	width: 200px;
+}
+
+.filter-sidebar h3 {
+	margin-left: -20px;
 }
 
 .filter {
@@ -109,9 +112,10 @@ body {
 }
 
 #googleMap {
-	margin-left: 20px;
-	width: 725px;
-	height: 700px;
+	margin-left: 40px;
+	width: 550px;
+	height: 550px;
+	border: inset 2px grey;
 }
 
 .time-dropdown {
@@ -226,8 +230,17 @@ body {
 }
 
 footer {
+	background-color: rgba(89, 26, 30, 0.5);
+	bottom: 0 px;
+	left: 0px;
+	margin-top: 30px;
+	position: absolute;
+	right: 0px;
+}
+footer h4 {
 	display: flex;
 	justify-content: center;
+	color: white;
 }
 
 .button-container {
@@ -235,6 +248,7 @@ footer {
 	flex-direction: column;
 	margin-top: 15px;
 }
+
 	
 /*background part of box*/
 .filter-box {
