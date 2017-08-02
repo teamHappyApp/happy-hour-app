@@ -161,7 +161,7 @@ var initMap = function(jsonResponseUrl) {
 						+ '</div>'
 						+ '<div class="iw-content">'
 						+ '<div class="iw-img">'
-						+ '<img style="width: 100%; height: 100px; margin: 0; padding:0;" src="images/TheLittleBar3.png">'
+						+ '<img class="iw-photo"style=display:block; width: 100%; height: 100px; margin-left: 10 px; padding:0;" src=' + establishment.image + '>'
 						+ '</div>'
 						+ '<p>'
 						+ establishment.address
@@ -169,9 +169,9 @@ var initMap = function(jsonResponseUrl) {
 						+ '<p>'
 						+ establishment.phoneNumber
 						+ '</p>'
-						+ '<a class="web-icon" target="_blank" href=' + establishment.url + '><img src="/images/web-icon.JPG" alt="web-browser-icon" title="Go To Website"></a>'
-						+ '<a class="estab-icon" target="_blank" href=' + establishment.facebook + '><img src="/images/facebook-icon.png"></a>'
-						+ '<a class="estab-icon" target="_blank" href=' + establishment.yelp + '><img src="/images/yelp-icon.png"></a>'
+						+ '<a class="web-icon" target="_blank" href=' + establishment.url + '><img src="images/web-icon.JPG"></a>'
+						+ '<a class="estab-icon" target="_blank" href=' + establishment.facebook + '><img src="images/facebook-icon.png"></a>'
+						+ '<a class="estab-icon" target="_blank" href=' + establishment.yelp + '><img src="images/yelp-icon.png"></a>'
 						+ '<p>'
 						+ formattedTime
 						+ '</p>'
