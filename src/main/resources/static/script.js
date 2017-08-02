@@ -90,18 +90,17 @@ var initMap = function(jsonResponseUrl) {
 				infoWindowContent[i] = setInfoWindow(establishment);
 
 				location = new google.maps.LatLng(
-						allEstablishments[i].latitude,
-						allEstablishments[i].longitude);
+						establishment.latitude,
+						establishment.longitude);
 
+				
 				marker = new google.maps.Marker({
 					position : location,
-					map : map
+					map : map,
+					title : establishment.name,
 				});
 
 				var infoWindow;
-
-				var iwOuter;
-				var iwCloseBtn;
 
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, i) {
