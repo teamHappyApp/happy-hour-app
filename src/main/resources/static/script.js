@@ -1,7 +1,7 @@
 var initMap = function(jsonResponseUrl) {
 	var map = new google.maps.Map(document.getElementById('googleMap'), {
 		zoom : 11,
-		center : new google.maps.LatLng(40.0010, -82.9900),
+		center : new google.maps.LatLng(40.02500, -83.0065665),
 		mapTypeId : google.maps.MapTypeId.ROADMAP,
 		styles : [ {
 			"featureType" : "administrative",
@@ -169,9 +169,9 @@ var initMap = function(jsonResponseUrl) {
 						+ '<p>'
 						+ establishment.phoneNumber
 						+ '</p>'
-						+ '<a class="web-icon" target="_blank" href=' + establishment.url + '><img src="images/web-icon.JPG"></a>'
-						+ '<a class="estab-icon" target="_blank" href=' + establishment.facebook + '><img src="images/facebook-icon.png"></a>'
-						+ '<a class="estab-icon" target="_blank" href=' + establishment.yelp + '><img src="images/yelp-icon.png"></a>'
+						+ '<a class="web-icon" target="_blank" href=' + establishment.url + '><img src="images/web-icon.JPG" title="Go to Website"></a>'
+						+ '<a class="estab-icon" target="_blank" href=' + establishment.facebook + '><img src="images/facebook-icon.png" title="Facebook"></a>'
+						+ '<a class="estab-icon" target="_blank" href=' + establishment.yelp + '><img src="images/yelp-icon.png" title="Yelp"></a>'
 						+ '<p>'
 						+ formattedTime
 						+ '</p>'
