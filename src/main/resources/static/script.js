@@ -115,7 +115,6 @@ var initMap = function(jsonResponseUrl) {
 
 			google.maps.event.addListener(map, 'click', function() {
 				infoWindow.close();
-
 			});
 
 			// function to return all content for the infoWindow - establishment

@@ -65,12 +65,14 @@ body {
 .filter {
 	margin-top: 10px;
 	margin-left: 50px;
+	display: flex;
+	flex-direction: column;
 }
 
 .noise-amb-container {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 30px;
+	margin-top: 20px;
 }
 
 .noise-level {
@@ -168,8 +170,7 @@ body {
 	top: 0 !important;
 	left: 0 !important;
 	width: 100% !important;
-	min-height: 120px !important;
-	padding-bottom: 10px;
+/* 	min-height: 120px !important; */
 	font-family: 'Pathway Gothic One', sans-serif;
 }
 
@@ -180,10 +181,12 @@ body {
 	color: white;
 	background-color: black;
 	text-align: center;
+	
 }
 
 .gm-style #iw-container {
-	height: 100%;
+	width: 100%;
+
 }
 
 .gm-style #iw-container .iw-content {
