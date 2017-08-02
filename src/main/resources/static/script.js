@@ -169,6 +169,9 @@ var initMap = function(jsonResponseUrl) {
 						+ '<p>'
 						+ establishment.phoneNumber
 						+ '</p>'
+						+ '<a class="web-icon" target="_blank" href=' + establishment.url + '><img src="/images/web-icon.JPG"></a>'
+						+ '<a class="estab-icon" target="_blank" href=' + establishment.facebook + '><img src="/images/facebook-icon.png"></a>'
+						+ '<a class="estab-icon" target="_blank" href=' + establishment.yelp + '><img src="/images/yelp-icon.png"></a>'
 						+ '<p>'
 						+ formattedTime
 						+ '</p>'
