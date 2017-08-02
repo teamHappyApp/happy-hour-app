@@ -3,18 +3,16 @@ body {
 	margin: 0px;
 	font-family: 'Pathway Gothic One', sans-serif;
 	background-color: black;
-	background-image: url(images/cropped-clear-bottle.jpg);
-	background-position: left top;
-	background-repeat: no-repeat;
-	background-size: 300px;
-
-
 }
 
 .header-pic {
-	width: 100%;
-	height: 400px;
-	margin-bottom: -100px;
+	position: absolute;
+	left: 0 px;
+	top: 0 px;
+	height: 600px;
+	
+	z-index: -1;
+
 }
 
 .title {
@@ -33,7 +31,7 @@ body {
 	background-color: rgba(0, 0, 0, 0.5);
 	transition: background-color .5s ease 0s;
 	width: 100%;
-	z-index: 1000;
+	position: absolute;
 }
 
 /*  .navbar.opaque {
@@ -59,7 +57,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: -70px;
+	margin-top: 75px;
 }
 
 .filter-sidebar {
