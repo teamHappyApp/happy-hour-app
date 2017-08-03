@@ -97,6 +97,7 @@ var initMap = function(jsonResponseUrl) {
 				marker = new google.maps.Marker({
 					position : location,
 					map : map,
+					icon : 'images/marker3.png',
 					title : establishment.name,
 				});
 
